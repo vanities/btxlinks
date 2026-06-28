@@ -1,0 +1,12 @@
+# macOS
+.DS_Store
+
+# logs / editor cruft
+*.log
+.vscode/
+.idea/
+
+# static host artifacts
+node_modules/
+.vercel
+dist/
