@@ -25,7 +25,7 @@ Open it in a browser, or host it on any static host (GitHub Pages, Vercel, Netli
 
 ### Wallets
 - [BTX PQ Wallet](https://easybtx.com/wallet) — post-quantum desktop wallet, ML-DSA / SLH-DSA (independent beta, unsigned)
-- [Bonuz](https://www.bonuz.xyz) — seedless, self-custodial iOS wallet
+- [Bonuz](https://www.bonuz.xyz) — seedless, self-custodial iOS wallet with BTX support
 
 ## Run locally
 
