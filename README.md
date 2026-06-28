@@ -1,5 +1,7 @@
 # BTX Links
 
+**Live → [btxlinks.vercel.app](https://btxlinks.vercel.app)**
+
 A small, open-source directory of community links for **BTX** — the post-quantum
 Bitcoin fork that uses **matrix-multiplication proof-of-work** and lattice-based,
 quantum-resistant keys.
