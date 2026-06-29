@@ -380,14 +380,14 @@
   .cp .cp-ic { display: inline-flex; color: var(--muted); transition: color 0.2s ease; }
   .cp .cp-ic svg { display: block; width: 12px; height: 12px; }
   .cp:hover .cp-ic { color: var(--c); }
-  .cp .ic-check { display: none; }
+  .cp .cp-ic .ic-check { display: none; }
 
   /* copied state */
   .cp.is-copied { border-color: color-mix(in srgb, var(--c) 60%, transparent); }
   .cp.is-copied .cp-val { color: var(--c); }
   .cp.is-copied .cp-ic { color: var(--c); }
-  .cp.is-copied .ic-copy { display: none; }
-  .cp.is-copied .ic-check { display: block; }
+  .cp.is-copied .cp-ic .ic-copy { display: none; }
+  .cp.is-copied .cp-ic .ic-check { display: block; }
 
   .cp-done {
     position: absolute;
@@ -424,6 +424,18 @@
     76%  { opacity: 1; transform: translate(-50%, -2px) scale(1); }
     100% { opacity: 0; transform: translate(-50%, -9px) scale(1); }
   }
+
+  /* full-width command variant (shell one-liners) */
+  .cp.cp-cmd {
+    width: 100%;
+    align-items: flex-start;
+    gap: 9px;
+    text-align: left;
+    line-height: 1.55;
+  }
+  .cp.cp-cmd .cp-key { user-select: none; padding-top: 0.5px; }
+  .cp.cp-cmd .cp-val { white-space: normal; overflow-wrap: anywhere; }
+  .cp.cp-cmd .cp-ic { margin-left: auto; padding-top: 2.5px; flex: none; }
 
   .card-foot {
     display: flex;
@@ -688,6 +700,18 @@
         </div>
         <h3 class="card-name">matador</h3>
         <p class="card-desc">A performance GPU miner for BTX, shipped as ready-to-run, checksum-verified binary releases. Multi-GPU aware with a built-in auto-updater; runs on Linux (including older cards) and Apple Silicon. Point it at any pool above.</p>
+        <div class="conn">
+          <button type="button" class="cp cp-cmd" data-copy="curl -fsSL https://raw.githubusercontent.com/vanities/matador-miner/main/install.sh | bash" aria-label="Copy matador install one-liner">
+            <span class="cp-key" aria-hidden="true">$</span><span class="cp-val">curl -fsSL https://raw.githubusercontent.com/vanities/matador-miner/main/install.sh | bash</span>
+            <span class="cp-ic" aria-hidden="true"><svg class="ic-copy"><use href="#i-copy"/></svg><svg class="ic-check"><use href="#i-check"/></svg></span>
+            <span class="cp-done" aria-hidden="true">copied</span>
+          </button>
+          <button type="button" class="cp cp-cmd" data-copy="matador-miner --mode pool --pool stratum+tcp://stratum.minebtx.com:3333 --worker rig1 --payoutaddress YOUR_BTX_ADDRESS" aria-label="Copy matador pool-mining command">
+            <span class="cp-key" aria-hidden="true">$</span><span class="cp-val">matador-miner --mode pool --pool stratum+tcp://stratum.minebtx.com:3333 --worker rig1 --payoutaddress YOUR_BTX_ADDRESS</span>
+            <span class="cp-ic" aria-hidden="true"><svg class="ic-copy"><use href="#i-copy"/></svg><svg class="ic-check"><use href="#i-check"/></svg></span>
+            <span class="cp-done" aria-hidden="true">copied</span>
+          </button>
+        </div>
         <div class="card-foot"><span class="host">github.com/vanities/matador-miner</span><span class="go">↗</span></div>
       </a>
 
