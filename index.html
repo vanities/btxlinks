@@ -338,8 +338,19 @@
     line-height: 1.62;
     flex: 1;
   }
-  .chip {
+  /* ---------- copy-to-clipboard endpoints ---------- */
+  .conn {
     align-self: flex-start;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .cp {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin: 0;
     font-family: var(--font-display);
     font-size: 11px;
     letter-spacing: 0.04em;
@@ -348,8 +359,71 @@
     border: 1px solid var(--line);
     border-radius: 6px;
     padding: 5px 9px;
+    cursor: pointer;
+    -webkit-appearance: none;
+    appearance: none;
+    transition: border-color 0.2s ease, background 0.2s ease,
+                color 0.2s ease, transform 0.12s ease;
   }
-  .chip span { color: var(--faint); }
+  .cp:hover {
+    border-color: color-mix(in srgb, var(--c) 45%, transparent);
+    background: var(--surface-2);
+  }
+  .cp:active { transform: translateY(1px); }
+  .cp:focus-visible {
+    outline: none;
+    border-color: var(--c);
+    box-shadow: 0 0 0 3px color-mix(in srgb, var(--c) 22%, transparent);
+  }
+  .cp .cp-key { color: var(--faint); }
+  .cp .cp-val { color: var(--ink); }
+  .cp .cp-ic { display: inline-flex; color: var(--muted); transition: color 0.2s ease; }
+  .cp .cp-ic svg { display: block; width: 12px; height: 12px; }
+  .cp:hover .cp-ic { color: var(--c); }
+  .cp .ic-check { display: none; }
+
+  /* copied state */
+  .cp.is-copied { border-color: color-mix(in srgb, var(--c) 60%, transparent); }
+  .cp.is-copied .cp-val { color: var(--c); }
+  .cp.is-copied .cp-ic { color: var(--c); }
+  .cp.is-copied .ic-copy { display: none; }
+  .cp.is-copied .ic-check { display: block; }
+
+  .cp-done {
+    position: absolute;
+    left: 50%;
+    bottom: 100%;
+    margin-bottom: 7px;
+    transform: translate(-50%, 4px) scale(0.9);
+    opacity: 0;
+    pointer-events: none;
+    white-space: nowrap;
+    font-size: 9.5px;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--bg);
+    background: var(--c);
+    border-radius: 5px;
+    padding: 3px 7px;
+    box-shadow: 0 8px 20px color-mix(in srgb, var(--c) 35%, transparent);
+  }
+  .cp-done::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    border: 4px solid transparent;
+    border-top-color: var(--c);
+  }
+  .cp.is-copied .cp-done { animation: copied 1.25s cubic-bezier(0.2, 0.7, 0.2, 1) forwards; }
+  @keyframes copied {
+    0%   { opacity: 0; transform: translate(-50%, 4px) scale(0.9); }
+    18%  { opacity: 1; transform: translate(-50%, -2px) scale(1); }
+    76%  { opacity: 1; transform: translate(-50%, -2px) scale(1); }
+    100% { opacity: 0; transform: translate(-50%, -9px) scale(1); }
+  }
 
   .card-foot {
     display: flex;
@@ -430,12 +504,23 @@
     #field { display: none; }
     .reveal { opacity: 1; animation: none; }
     .mtx.out span { animation: none; opacity: 1; }
-    .card, .go, .card::before { transition: none; }
+    .card, .go, .card::before, .cp { transition: none; }
+    .cp.is-copied .cp-done {
+      animation: none;
+      opacity: 1;
+      transform: translate(-50%, -2px) scale(1);
+    }
   }
 </style>
 </head>
 <body>
 <canvas id="field" aria-hidden="true"></canvas>
+
+<!-- icon sprite: copy + check glyphs, referenced by the endpoint copy buttons -->
+<svg style="position:absolute;width:0;height:0" aria-hidden="true" focusable="false">
+  <symbol id="i-copy" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></symbol>
+  <symbol id="i-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></symbol>
+</svg>
 
 <div class="wrap">
 
@@ -498,7 +583,18 @@
         </div>
         <h3 class="card-name">minebtx</h3>
         <p class="card-desc">No-node mining: a one-line installer auto-detects your GPU and verifies the binary. Bundles a live dashboard and block explorer — the closest thing BTX has to a home base.</p>
-        <div class="chip">stratum&nbsp;<span>·</span>&nbsp;stratum.minebtx.com:3333&nbsp;<span>·</span>&nbsp;ssl&nbsp;:3334</div>
+        <div class="conn">
+          <button type="button" class="cp" data-copy="stratum.minebtx.com:3333" aria-label="Copy stratum endpoint stratum.minebtx.com:3333">
+            <span class="cp-key">stratum</span><span class="cp-val">stratum.minebtx.com:3333</span>
+            <span class="cp-ic" aria-hidden="true"><svg class="ic-copy"><use href="#i-copy"/></svg><svg class="ic-check"><use href="#i-check"/></svg></span>
+            <span class="cp-done" aria-hidden="true">copied</span>
+          </button>
+          <button type="button" class="cp" data-copy="stratum.minebtx.com:3334" aria-label="Copy SSL stratum endpoint stratum.minebtx.com:3334">
+            <span class="cp-key">ssl</span><span class="cp-val">stratum.minebtx.com:3334</span>
+            <span class="cp-ic" aria-hidden="true"><svg class="ic-copy"><use href="#i-copy"/></svg><svg class="ic-check"><use href="#i-check"/></svg></span>
+            <span class="cp-done" aria-hidden="true">copied</span>
+          </button>
+        </div>
         <div class="card-foot"><span class="host">minebtx.com</span><span class="go">↗</span></div>
       </a>
 
@@ -509,7 +605,13 @@
         </div>
         <h3 class="card-name">poolbtx</h3>
         <p class="card-desc">Live payouts, per-machine scoring, and one-command onboarding. Built for serious hardware, with weekly settlements straight to your address.</p>
-        <div class="chip">stratum&nbsp;<span>·</span>&nbsp;poolbtx.com:3333</div>
+        <div class="conn">
+          <button type="button" class="cp" data-copy="poolbtx.com:3333" aria-label="Copy stratum endpoint poolbtx.com:3333">
+            <span class="cp-key">stratum</span><span class="cp-val">poolbtx.com:3333</span>
+            <span class="cp-ic" aria-hidden="true"><svg class="ic-copy"><use href="#i-copy"/></svg><svg class="ic-check"><use href="#i-check"/></svg></span>
+            <span class="cp-done" aria-hidden="true">copied</span>
+          </button>
+        </div>
         <div class="card-foot"><span class="host">poolbtx.com</span><span class="go">↗</span></div>
       </a>
 
@@ -520,7 +622,13 @@
         </div>
         <h3 class="card-name">bitminerpool</h3>
         <p class="card-desc">An alternate BTX pool endpoint — a second home for your rigs to help spread hashrate across the network rather than concentrating it in one place.</p>
-        <div class="chip">stratum&nbsp;<span>·</span>&nbsp;stratum.bitminerpool.xyz:3333</div>
+        <div class="conn">
+          <button type="button" class="cp" data-copy="stratum.bitminerpool.xyz:3333" aria-label="Copy stratum endpoint stratum.bitminerpool.xyz:3333">
+            <span class="cp-key">stratum</span><span class="cp-val">stratum.bitminerpool.xyz:3333</span>
+            <span class="cp-ic" aria-hidden="true"><svg class="ic-copy"><use href="#i-copy"/></svg><svg class="ic-check"><use href="#i-check"/></svg></span>
+            <span class="cp-done" aria-hidden="true">copied</span>
+          </button>
+        </div>
         <div class="card-foot"><span class="host">bitminerpool.xyz</span><span class="go">↗</span></div>
       </a>
 
@@ -531,7 +639,13 @@
         </div>
         <h3 class="card-name">Byron Pool</h3>
         <p class="card-desc">An Australian BTX collective. Combine GPUs for steadier PPLNS earnings while keeping self-custody of every reward you mine.</p>
-        <div class="chip">invite-gated&nbsp;<span>·</span>&nbsp;byron join</div>
+        <div class="conn">
+          <button type="button" class="cp" data-copy="byron join" aria-label="Copy join command: byron join">
+            <span class="cp-key">invite-gated</span><span class="cp-val">byron join</span>
+            <span class="cp-ic" aria-hidden="true"><svg class="ic-copy"><use href="#i-copy"/></svg><svg class="ic-check"><use href="#i-check"/></svg></span>
+            <span class="cp-done" aria-hidden="true">copied</span>
+          </button>
+        </div>
         <div class="card-foot"><span class="host">btxbyronbay.com</span><span class="go">↗</span></div>
       </a>
 
@@ -542,7 +656,18 @@
         </div>
         <h3 class="card-name">ninjaraider</h3>
         <p class="card-desc">One of the busiest BTX pools — thousands of worker clients and a live dashboard with pool stats, miner views, and a recent-block history you can audit. PPLNS payouts from a low 1 BTX threshold.</p>
-        <div class="chip">stratum&nbsp;<span>·</span>&nbsp;ninjaraider.com:44920&nbsp;<span>·</span>&nbsp;ssl&nbsp;:44921</div>
+        <div class="conn">
+          <button type="button" class="cp" data-copy="ninjaraider.com:44920" aria-label="Copy stratum endpoint ninjaraider.com:44920">
+            <span class="cp-key">stratum</span><span class="cp-val">ninjaraider.com:44920</span>
+            <span class="cp-ic" aria-hidden="true"><svg class="ic-copy"><use href="#i-copy"/></svg><svg class="ic-check"><use href="#i-check"/></svg></span>
+            <span class="cp-done" aria-hidden="true">copied</span>
+          </button>
+          <button type="button" class="cp" data-copy="ninjaraider.com:44921" aria-label="Copy SSL stratum endpoint ninjaraider.com:44921">
+            <span class="cp-key">ssl</span><span class="cp-val">ninjaraider.com:44921</span>
+            <span class="cp-ic" aria-hidden="true"><svg class="ic-copy"><use href="#i-copy"/></svg><svg class="ic-check"><use href="#i-check"/></svg></span>
+            <span class="cp-done" aria-hidden="true">copied</span>
+          </button>
+        </div>
         <div class="card-foot"><span class="host">ninjaraider.com/btx-pplns</span><span class="go">↗</span></div>
       </a>
 
@@ -718,6 +843,74 @@
 
     build();
     requestAnimationFrame(loop);
+  })();
+</script>
+
+<script>
+  // Copy-to-clipboard for pool endpoints. A .cp button copies its data-copy
+  // value and flashes a "copied" badge — without ever following the card link
+  // it sits inside (preventDefault + stopPropagation kill the navigation).
+  (function () {
+    // Legacy execCommand path for when the async Clipboard API is missing
+    // (non-secure context) or blocked (no transient activation, denied perms).
+    function legacyCopy(text) {
+      return new Promise(function (resolve, reject) {
+        try {
+          var ta = document.createElement("textarea");
+          ta.value = text;
+          ta.setAttribute("readonly", "");
+          ta.style.position = "fixed";
+          ta.style.top = "-9999px";
+          ta.style.opacity = "0";
+          document.body.appendChild(ta);
+          ta.select();
+          ta.setSelectionRange(0, text.length);
+          var ok = document.execCommand("copy");
+          document.body.removeChild(ta);
+          ok ? resolve() : reject(new Error("execCommand returned false"));
+        } catch (err) {
+          reject(err);
+        }
+      });
+    }
+
+    function copyText(text) {
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        // Fall back if writeText rejects (e.g. permissions / no activation),
+        // not only when the API is absent.
+        return navigator.clipboard.writeText(text).catch(function () {
+          return legacyCopy(text);
+        });
+      }
+      return legacyCopy(text);
+    }
+
+    function flash(btn) {
+      btn.classList.remove("is-copied");
+      void btn.offsetWidth; // reflow so the animation restarts on rapid clicks
+      btn.classList.add("is-copied");
+      clearTimeout(btn._cpT);
+      btn._cpT = setTimeout(function () {
+        btn.classList.remove("is-copied");
+      }, 1250);
+    }
+
+    function onClick(e) {
+      e.preventDefault();   // don't open the pool link
+      e.stopPropagation();
+      var btn = e.currentTarget;
+      var text = btn.getAttribute("data-copy");
+      if (!text) return;
+      copyText(text).then(
+        function () { flash(btn); },
+        function (err) { console.warn("[copy] failed:", err); }
+      );
+    }
+
+    var btns = document.querySelectorAll(".cp");
+    for (var i = 0; i < btns.length; i++) {
+      btns[i].addEventListener("click", onClick);
+    }
   })();
 </script>
 </body>
