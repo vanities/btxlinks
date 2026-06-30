@@ -40,6 +40,7 @@ Open it in a browser, or host it on any static host (GitHub Pages, Vercel, Netli
 
 ### Explorers
 - [BTXplorer](https://explorer.minebtx.com/) — open-source block explorer; search blocks, transactions, and addresses
+- [first light](https://explorer.btxbyronbay.com/) — Byron Pool's BTX explorer; blocks, transactions, and network/chain-health stats
 
 ### Community
 - [BTX on X](https://x.com/btxcommunitvfd) — community X account
