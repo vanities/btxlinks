@@ -381,6 +381,39 @@
     border-radius: 4px;
   }
   .share .pct { color: var(--ink); font-weight: 600; min-width: 3.6em; text-align: right; }
+  /* network-distribution donut */
+  .netchart {
+    display: flex;
+    align-items: center;
+    gap: 28px;
+    flex-wrap: wrap;
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 13px;
+    padding: 18px 24px;
+    margin-bottom: 24px;
+  }
+  .netchart .donut { width: 132px; height: 132px; flex: none; }
+  .netchart .donut .seg {
+    transition: stroke-dasharray 0.6s cubic-bezier(0.2, 0.7, 0.2, 1),
+                stroke-dashoffset 0.6s cubic-bezier(0.2, 0.7, 0.2, 1);
+  }
+  .netchart .ring-bg { fill: none; stroke: var(--line-2); }
+  .netchart .hole .v { fill: var(--ink); font-size: 6px; font-weight: 700; font-family: var(--font-display); }
+  .netchart .hole .u { fill: var(--faint); font-size: 2.6px; letter-spacing: 0.14em; font-family: var(--font-display); }
+  .netchart .legend {
+    list-style: none;
+    margin: 0;
+    flex: 1;
+    min-width: 220px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(148px, 1fr));
+    gap: 7px 20px;
+  }
+  .netchart .legend li { display: flex; align-items: center; gap: 9px; font-size: 12.5px; }
+  .netchart .legend .sw { width: 10px; height: 10px; border-radius: 3px; flex: none; }
+  .netchart .legend .nm { color: var(--muted); white-space: nowrap; }
+  .netchart .legend .pc { margin-left: auto; color: var(--ink); font-family: var(--font-display); font-size: 11px; }
   /* ---------- copy-to-clipboard endpoints ---------- */
   .conn {
     align-self: flex-start;
@@ -670,6 +703,17 @@
       <h2>Pools</h2><span class="count">[06]</span><span class="bar"></span>
     </div>
     <p class="sec-note">network <span id="net-rate">≈149 MN/s</span> · ~90s blocks · height <span id="net-height">~146,244</span> · share per pool · <span id="net-status">snapshot 2026-06-30</span></p>
+    <div id="net-chart" class="netchart" hidden>
+      <svg class="donut" viewBox="0 0 42 42" role="img" aria-label="BTX pool network-share distribution">
+        <circle class="ring-bg" cx="21" cy="21" r="15.9155" stroke-width="5"></circle>
+        <g id="net-segs"></g>
+        <g class="hole" text-anchor="middle">
+          <text id="net-hole-v" class="v" x="21" y="20.6">146</text>
+          <text class="u" x="21" y="24.2">MN/s</text>
+        </g>
+      </svg>
+      <ul id="net-legend" class="legend"></ul>
+    </div>
     <div class="grid">
 
       <!-- duplicate a <a class="card ..."> block to add a link -->
@@ -1177,6 +1221,54 @@
     var statusEl = document.getElementById("net-status");
     var lastUpdate = 0;
 
+    var POOL_META = {
+      ninjaraider:  { name: "ninjaraider",  color: "#ffb43a" },
+      poolbtx:      { name: "poolbtx",      color: "#86e8a0" },
+      minebtx:      { name: "minebtx",      color: "#6ee7ff" },
+      byron:        { name: "Byron",        color: "#b79cff" },
+      "btx-pool":   { name: "btx-pool",     color: "#ff9ec4" },
+      bitminerpool: { name: "bitminerpool", color: "#ffd27a" }
+    };
+
+    // Donut of pool network-share, rebuilt from the (live or snapshot) bar values.
+    function buildChart() {
+      var chart = document.getElementById("net-chart");
+      if (!chart) return;
+      var segG = document.getElementById("net-segs");
+      var legend = document.getElementById("net-legend");
+      var holeV = document.getElementById("net-hole-v");
+
+      var items = [];
+      bars.forEach(function (el) {
+        var meta = POOL_META[el.getAttribute("data-pool")];
+        if (!meta) return;
+        var pct = parseFloat(el.querySelector(".fill").style.width || "0");
+        items.push({ name: meta.name, color: meta.color, pct: isFinite(pct) ? pct : 0 });
+      });
+      var sum = items.reduce(function (a, b) { return a + b.pct; }, 0);
+      items.push({ name: "solo / other", color: "#9a9aac", pct: Math.max(0, 100 - sum) });
+      items.sort(function (a, b) { return b.pct - a.pct; });
+
+      var cum = 0, segs = "";
+      items.forEach(function (it) {
+        var p = Math.max(0, Math.min(100, it.pct));
+        if (p > 0.05) {
+          segs += '<circle class="seg" cx="21" cy="21" r="15.9155" fill="transparent" stroke="' + it.color +
+            '" stroke-width="5" stroke-dasharray="' + p.toFixed(3) + " " + (100 - p).toFixed(3) +
+            '" stroke-dashoffset="' + (25 - cum).toFixed(3) + '"></circle>';
+        }
+        cum += p;
+      });
+      segG.innerHTML = segs;
+      legend.innerHTML = items.map(function (it) {
+        var lbl = it.pct >= 10 ? Math.round(it.pct) : it.pct >= 0.1 ? it.pct.toFixed(1) : it.pct.toFixed(2);
+        return '<li><span class="sw" style="background:' + it.color + '"></span><span class="nm">' +
+          it.name + '</span><span class="pc">' + lbl + "%</span></li>";
+      }).join("");
+      if (holeV && rateEl) { var m = rateEl.textContent.match(/\d+/); if (m) holeV.textContent = m[0]; }
+      chart.hidden = false;
+    }
+
     function fmtPct(p) {
       if (p >= 10) return "~" + Math.round(p) + "%";
       if (p >= 0.1) return "~" + p.toFixed(1) + "%";
@@ -1208,11 +1300,13 @@
           }
           lastUpdate = Date.now();
           showAge();
+          buildChart();
         })
         .catch(function () {
           if (statusEl && !lastUpdate) statusEl.textContent = "snapshot 2026-06-30";
         });
     }
+    buildChart();
     refresh();
     setInterval(refresh, 60000);
     setInterval(showAge, 15000);
