@@ -1,0 +1,74 @@
+name: ninjaraider share
+
+# ninjaraider's stats are WebSocket-only, so we scrape its dashboard in a headless
+# browser on a schedule and publish the share to the `data` branch. /api/pools reads
+# that file server-side and merges it into the live network-share feed. Keeping it on
+# a separate branch keeps `main` (and Vercel deploys) clean.
+
+on:
+  schedule:
+    - cron: "*/20 * * * *" # every ~20 min (GitHub may delay under load)
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+concurrency:
+  group: ninjaraider-share
+  cancel-in-progress: false
+
+jobs:
+  scrape:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout (scraper script)
+        uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+
+      - name: Cache Playwright browsers
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/ms-playwright
+          key: playwright-chromium-v1
+
+      - name: Install Playwright + Chromium
+        run: |
+          npm init -y >/dev/null 2>&1
+          npm install playwright@1.49.1 >/dev/null 2>&1
+          npx playwright install --with-deps chromium
+
+      - name: Scrape ninjaraider
+        run: node scripts/scrape-ninjaraider.mjs | tee ninjaraider.json
+
+      - name: Validate output
+        run: |
+          node -e "const d=require('./ninjaraider.json'); if(!(typeof d.share==='number'&&d.share>=0&&d.share<=100&&d.net_hps>0)){console.error('invalid payload',d);process.exit(1)} console.log('valid: share='+d.share+'%')"
+
+      - name: Publish to data branch
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          git config --global user.email "actions@users.noreply.github.com"
+          git config --global user.name "ninjaraider-bot"
+          tmp="$(mktemp -d)"
+          repo="https://x-access-token:${GH_TOKEN}@github.com/${GITHUB_REPOSITORY}.git"
+          if git ls-remote --exit-code --heads "$repo" data >/dev/null 2>&1; then
+            git clone --depth 1 --branch data "$repo" "$tmp"
+          else
+            echo "data branch missing — creating it"
+            git clone --depth 1 "$repo" "$tmp"
+            ( cd "$tmp" && git checkout --orphan data && git rm -rf . >/dev/null 2>&1 || true )
+          fi
+          cp ninjaraider.json "$tmp/ninjaraider.json"
+          cd "$tmp"
+          git add ninjaraider.json
+          if git diff --cached --quiet; then
+            echo "no change — skipping commit"
+            exit 0
+          fi
+          git commit -m "ninjaraider share update [skip ci]"
+          git push origin HEAD:data

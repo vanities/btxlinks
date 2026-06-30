@@ -53,6 +53,12 @@ const SOURCES = {
     const s = direct ?? (frac == null ? null : frac * 100);
     return { share: s, net: num(d?.stats?.network?.network_hash_nps), height: num(d?.chain?.height) };
   },
+  // ninjaraider has no public stat API (WebSocket-only), so the ninjaraider-share
+  // GitHub Action scrapes its dashboard every ~20 min and publishes here.
+  async ninjaraider() {
+    const d = await fetchJson('https://raw.githubusercontent.com/vanities/btxlinks/data/ninjaraider.json');
+    return { share: num(d?.share), net: null, height: num(d?.height) };
+  },
 };
 
 async function collect() {
