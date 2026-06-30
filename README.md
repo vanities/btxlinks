@@ -30,8 +30,9 @@ Open it in a browser, or host it on any static host (GitHub Pages, Vercel, Netli
 - [btx-pool](https://btx-pool.com/) — public PPLNS pool with vardiff · `stratum btx-pool.com:3334`
 
 ### Miners
-- [matador](https://github.com/vanities/matador-miner) — performance GPU miner, ready-to-run binary releases (Linux + Apple Silicon)
+- [matador](https://github.com/vanities/matador-miner) — performance GPU miner, ready-to-run binary releases (Linux + Apple Silicon), 1% dev fee
 - [easyBTX](https://easybtx.com/) — one-click NVIDIA RTX miner with a built-in wallet
+- [nekominer](https://github.com/shatll-s/nekominer-release) — CUDA GPU miner (NVIDIA, Linux), prebuilt binaries, 1% dev fee on BTX
 
 ### Wallets
 - [BTX PQ Wallet](https://easybtx.com/wallet) — post-quantum desktop wallet, ML-DSA / SLH-DSA (independent beta, unsigned)
