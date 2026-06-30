@@ -3,11 +3,11 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>BTX Links — pools, miners &amp; wallets for the post-quantum Bitcoin fork</title>
-<meta name="description" content="A community directory of mining pools, miners, and wallets for BTX — the post-quantum Bitcoin fork with matrix-multiplication proof-of-work. Not affiliated with the original BTX developers." />
+<title>BTX Links — pools, miners, wallets &amp; explorers for the post-quantum Bitcoin fork</title>
+<meta name="description" content="A community directory of mining pools, miners, wallets, and block explorers for BTX — the post-quantum Bitcoin fork with matrix-multiplication proof-of-work. Community-run and mostly unofficial." />
 <meta name="theme-color" content="#0b0b0e" />
 <meta property="og:title" content="BTX Links" />
-<meta property="og:description" content="Pools, miners, and wallets for BTX — the post-quantum Bitcoin fork with matmul proof-of-work. Community directory, not affiliated with the original devs." />
+<meta property="og:description" content="Pools, miners, wallets, and explorers for BTX — the post-quantum Bitcoin fork with matmul proof-of-work. Community directory, mostly unofficial." />
 <meta property="og:type" content="website" />
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%230b0b0e'/%3E%3Cg%3E%3Crect x='7' y='7' width='7' height='7' rx='1.5' fill='%23ffb43a'/%3E%3Crect x='18' y='7' width='7' height='7' rx='1.5' fill='%23ffb43a'/%3E%3Crect x='7' y='18' width='7' height='7' rx='1.5' fill='%23ffb43a'/%3E%3Crect x='18' y='18' width='7' height='7' rx='1.5' fill='%236ee7ff'/%3E%3C/g%3E%3C/svg%3E" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -27,6 +27,8 @@
     --amber:     #ffb43a;
     --cyan:      #6ee7ff;
     --green:     #86e8a0;
+    --violet:    #b79cff;
+    --rose:      #ff9ec4;
     --font-display: 'Martian Mono', ui-monospace, 'SFMono-Regular', monospace;
     --font-body:    'IBM Plex Mono', ui-monospace, 'SFMono-Regular', monospace;
   }
@@ -273,6 +275,8 @@
   }
   .card.t-miner  { --c: var(--cyan); }
   .card.t-wallet { --c: var(--green); }
+  .card.t-tool   { --c: var(--violet); }
+  .card.t-social { --c: var(--rose); }
 
   .card::before {
     content: "";
@@ -325,6 +329,11 @@
   }
   .tag.hot { color: var(--c); border-color: color-mix(in srgb, var(--c) 40%, transparent); }
   .tag.fee { color: var(--ink); border-color: color-mix(in srgb, var(--ink) 22%, transparent); }
+  .tag.official {
+    color: var(--amber);
+    border-color: color-mix(in srgb, var(--amber) 45%, transparent);
+    background: color-mix(in srgb, var(--amber) 8%, transparent);
+  }
 
   .card-name {
     font-family: var(--font-display);
@@ -553,11 +562,11 @@
       <div class="eyebrow reveal" style="--d:.04s">// community directory</div>
       <h1 class="title reveal" style="--d:.10s">BTX<span class="lk">LINKS</span></h1>
       <p class="lead reveal" style="--d:.18s">
-        Pools, miners, and wallets for <b>BTX</b> — the post-quantum Bitcoin fork
+        Pools, miners, wallets, and explorers for <b>BTX</b> — the post-quantum Bitcoin fork
         that swaps SHA-256 for <b>matrix-multiplication</b> proof-of-work and ECDSA
         for lattice-based, quantum-resistant keys.
       </p>
-      <div class="orient reveal" style="--d:.24s"><span>pools</span> · <span>miners</span> · <span>wallets</span></div>
+      <div class="orient reveal" style="--d:.24s"><span>official</span> · <span>pools</span> · <span>miners</span> · <span>wallets</span> · <span>explorers</span> · <span>community</span></div>
     </div>
 
     <!-- matmul motif: a real 2x2 multiply ([7 2;4 9] x [3 5;2 15] = [25 65;30 155]) -->
@@ -574,23 +583,64 @@
   <div class="notice reveal" style="--d:.34s">
     <span class="ic">[!]</span>
     <div>
-      <b>Independent &amp; unofficial.</b> Every project listed here is community-run and is
-      <b>not affiliated with, nor endorsed by, the original BTX developers</b>. This page just
-      collects links. Verify each URL yourself before pointing hardware — or funds — at it.
+      <b>Independent &amp; unofficial.</b> Apart from the <b>Official</b> section, every project
+      listed here is community-run and is <b>not affiliated with, nor endorsed by, the original
+      BTX developers</b>. This page just collects links. Verify each URL yourself before pointing
+      hardware — or funds — at it.
     </div>
   </div>
+
+  <!-- ===================== OFFICIAL ===================== -->
+  <section class="section">
+    <div class="sec-head">
+      <h2>Official</h2><span class="count">[03]</span><span class="bar"></span>
+    </div>
+    <div class="grid">
+
+      <a class="card reveal" style="--d:.05s" href="https://btx.dev/" target="_blank" rel="noopener noreferrer">
+        <div class="card-top">
+          <span class="idx">01</span>
+          <span class="tags"><span class="tag official">OFFICIAL</span><span class="tag">DEV</span><span class="tag">DOCS</span></span>
+        </div>
+        <h3 class="card-name">btx.dev</h3>
+        <p class="card-desc">The official BTX developer hub — node releases, build and mainnet-connect guides, the REST API reference, and the spec + context whitepapers. Source lives at github.com/btxchain.</p>
+        <div class="card-foot"><span class="host">btx.dev</span><span class="go">↗</span></div>
+      </a>
+
+      <a class="card reveal" style="--d:.10s" href="https://btxprice.com/" target="_blank" rel="noopener noreferrer">
+        <div class="card-top">
+          <span class="idx">02</span>
+          <span class="tags"><span class="tag official">OFFICIAL</span><span class="tag">PRICE</span><span class="tag">API</span></span>
+        </div>
+        <h3 class="card-name">BTX Price</h3>
+        <p class="card-desc">The official BTX price dashboard — live model price, market cap, sats-per-BTX, and the MatMul network rate, plus a forward-market view and valuation model. JSON API for every figure on the page.</p>
+        <div class="card-foot"><span class="host">btxprice.com</span><span class="go">↗</span></div>
+      </a>
+
+      <a class="card reveal" style="--d:.15s" href="https://t.me/BTXtelegram" target="_blank" rel="noopener noreferrer">
+        <div class="card-top">
+          <span class="idx">03</span>
+          <span class="tags"><span class="tag official">OFFICIAL</span><span class="tag">TELEGRAM</span></span>
+        </div>
+        <h3 class="card-name">BTX Telegram</h3>
+        <p class="card-desc">The project's official Telegram channel — release notices and announcements straight from the BTX developers.</p>
+        <div class="card-foot"><span class="host">t.me/BTXtelegram</span><span class="go">↗</span></div>
+      </a>
+
+    </div>
+  </section>
 
   <!-- ===================== POOLS ===================== -->
   <section class="section">
     <div class="sec-head">
-      <h2>Pools</h2><span class="count">[05]</span><span class="bar"></span>
+      <h2>Pools</h2><span class="count">[06]</span><span class="bar"></span>
     </div>
     <div class="grid">
 
       <!-- duplicate a <a class="card ..."> block to add a link -->
       <a class="card t-pool reveal" style="--d:.05s" href="https://minebtx.com" target="_blank" rel="noopener noreferrer">
         <div class="card-top">
-          <span class="idx">01</span>
+          <span class="idx">04</span>
           <span class="tags"><span class="tag hot">POOL</span><span class="tag">HUB</span><span class="tag fee">2.5% FEE</span></span>
         </div>
         <h3 class="card-name">minebtx</h3>
@@ -612,7 +662,7 @@
 
       <a class="card t-pool reveal" style="--d:.10s" href="https://poolbtx.com" target="_blank" rel="noopener noreferrer">
         <div class="card-top">
-          <span class="idx">02</span>
+          <span class="idx">05</span>
           <span class="tags"><span class="tag hot">POOL</span><span class="tag">PPLNS</span><span class="tag fee">5% FEE</span></span>
         </div>
         <h3 class="card-name">poolbtx</h3>
@@ -629,7 +679,7 @@
 
       <a class="card t-pool reveal" style="--d:.15s" href="https://bitminerpool.xyz" target="_blank" rel="noopener noreferrer">
         <div class="card-top">
-          <span class="idx">03</span>
+          <span class="idx">06</span>
           <span class="tags"><span class="tag hot">POOL</span><span class="tag">PPLNS</span><span class="tag fee">1% FEE</span></span>
         </div>
         <h3 class="card-name">bitminerpool</h3>
@@ -646,7 +696,7 @@
 
       <a class="card t-pool reveal" style="--d:.20s" href="https://btxbyronbay.com" target="_blank" rel="noopener noreferrer">
         <div class="card-top">
-          <span class="idx">04</span>
+          <span class="idx">07</span>
           <span class="tags"><span class="tag hot">POOL</span><span class="tag">PPLNS</span><span class="tag">AU</span><span class="tag fee">1.5% FEE</span></span>
         </div>
         <h3 class="card-name">Byron Pool</h3>
@@ -663,7 +713,7 @@
 
       <a class="card t-pool reveal" style="--d:.25s" href="https://ninjaraider.com/btx-pplns" target="_blank" rel="noopener noreferrer">
         <div class="card-top">
-          <span class="idx">05</span>
+          <span class="idx">08</span>
           <span class="tags"><span class="tag hot">POOL</span><span class="tag">PPLNS</span><span class="tag fee">2% FEE</span></span>
         </div>
         <h3 class="card-name">ninjaraider</h3>
@@ -683,6 +733,23 @@
         <div class="card-foot"><span class="host">ninjaraider.com/btx-pplns</span><span class="go">↗</span></div>
       </a>
 
+      <a class="card t-pool reveal" style="--d:.30s" href="https://btx-pool.com/" target="_blank" rel="noopener noreferrer">
+        <div class="card-top">
+          <span class="idx">09</span>
+          <span class="tags"><span class="tag hot">POOL</span><span class="tag">PPLNS</span><span class="tag">VARDIFF</span><span class="tag fee">6% FEE</span></span>
+        </div>
+        <h3 class="card-name">btx-pool</h3>
+        <p class="card-desc">A public BTX pool with PPLNS payouts and vardiff, plus a live view of pool hashrate, network share, and recent block finders. Ships its own GPU miner binaries for NVIDIA Ampere-or-newer cards (Linux + Windows).</p>
+        <div class="conn">
+          <button type="button" class="cp" data-copy="btx-pool.com:3334" aria-label="Copy stratum endpoint btx-pool.com:3334">
+            <span class="cp-key">stratum</span><span class="cp-val">btx-pool.com:3334</span>
+            <span class="cp-ic" aria-hidden="true"><svg class="ic-copy"><use href="#i-copy"/></svg><svg class="ic-check"><use href="#i-check"/></svg></span>
+            <span class="cp-done" aria-hidden="true">copied</span>
+          </button>
+        </div>
+        <div class="card-foot"><span class="host">btx-pool.com</span><span class="go">↗</span></div>
+      </a>
+
     </div>
   </section>
 
@@ -695,7 +762,7 @@
 
       <a class="card t-miner reveal" style="--d:.05s" href="https://github.com/vanities/matador-miner" target="_blank" rel="noopener noreferrer">
         <div class="card-top">
-          <span class="idx">06</span>
+          <span class="idx">10</span>
           <span class="tags"><span class="tag hot">MINER</span><span class="tag">GPU</span><span class="tag">MULTI-GPU</span><span class="tag">MAC · LINUX · WSL</span></span>
         </div>
         <h3 class="card-name">matador</h3>
@@ -717,7 +784,7 @@
 
       <a class="card t-miner reveal" style="--d:.10s" href="https://easybtx.com/" target="_blank" rel="noopener noreferrer">
         <div class="card-top">
-          <span class="idx">07</span>
+          <span class="idx">11</span>
           <span class="tags"><span class="tag hot">MINER</span><span class="tag">GPU</span><span class="tag">MAC · WIN · LINUX</span></span>
         </div>
         <h3 class="card-name">easyBTX</h3>
@@ -744,7 +811,7 @@
 
       <a class="card t-wallet reveal" style="--d:.05s" href="https://easybtx.com/wallet" target="_blank" rel="noopener noreferrer">
         <div class="card-top">
-          <span class="idx">08</span>
+          <span class="idx">12</span>
           <span class="tags"><span class="tag hot">WALLET</span><span class="tag">PQ</span><span class="tag">DESKTOP</span></span>
         </div>
         <h3 class="card-name">BTX PQ Wallet</h3>
@@ -754,12 +821,82 @@
 
       <a class="card t-wallet reveal" style="--d:.10s" href="https://www.bonuz.xyz" target="_blank" rel="noopener noreferrer">
         <div class="card-top">
-          <span class="idx">09</span>
+          <span class="idx">13</span>
           <span class="tags"><span class="tag hot">WALLET</span><span class="tag">iOS</span><span class="tag">SEEDLESS</span></span>
         </div>
         <h3 class="card-name">Bonuz</h3>
         <p class="card-desc">A self-custodial iOS wallet with native BTX support that ditches seed phrases entirely — self-custody without the twelve-word ritual. Hold and send your BTX straight from your phone.</p>
         <div class="card-foot"><span class="host">bonuz.xyz</span><span class="go">↗</span></div>
+      </a>
+
+    </div>
+  </section>
+
+  <!-- ===================== EXPLORERS ===================== -->
+  <section class="section">
+    <div class="sec-head">
+      <h2>Explorers</h2><span class="count">[01]</span><span class="bar"></span>
+    </div>
+    <div class="grid">
+
+      <a class="card t-tool reveal" style="--d:.05s" href="https://explorer.minebtx.com/" target="_blank" rel="noopener noreferrer">
+        <div class="card-top">
+          <span class="idx">14</span>
+          <span class="tags"><span class="tag hot">EXPLORER</span><span class="tag">OPEN SOURCE</span><span class="tag">BLOCKS · TX</span></span>
+        </div>
+        <h3 class="card-name">BTXplorer</h3>
+        <p class="card-desc">Open-source block explorer for the BTX chain. Search any block, transaction, or address and watch network stats update live — a quick way to confirm payouts and follow the chain.</p>
+        <div class="card-foot"><span class="host">explorer.minebtx.com</span><span class="go">↗</span></div>
+      </a>
+
+    </div>
+  </section>
+
+  <!-- ===================== COMMUNITY ===================== -->
+  <section class="section">
+    <div class="sec-head">
+      <h2>Community</h2><span class="count">[04]</span><span class="bar"></span>
+    </div>
+    <div class="grid">
+
+      <a class="card t-social reveal" style="--d:.05s" href="https://x.com/btxcommunitvfd" target="_blank" rel="noopener noreferrer">
+        <div class="card-top">
+          <span class="idx">15</span>
+          <span class="tags"><span class="tag hot">X</span><span class="tag">COMMUNITY</span></span>
+        </div>
+        <h3 class="card-name">BTX on X</h3>
+        <p class="card-desc">Community account for BTX on X — news, mining milestones, and signal-boosting across the ecosystem.</p>
+        <div class="card-foot"><span class="host">x.com/btxcommunitvfd</span><span class="go">↗</span></div>
+      </a>
+
+      <a class="card t-social reveal" style="--d:.10s" href="https://t.me/BTX_Community_Chat" target="_blank" rel="noopener noreferrer">
+        <div class="card-top">
+          <span class="idx">16</span>
+          <span class="tags"><span class="tag hot">TELEGRAM</span><span class="tag">COMMUNITY</span></span>
+        </div>
+        <h3 class="card-name">BTX Community Chat</h3>
+        <p class="card-desc">The main community Telegram — open chat for miners and holders to swap setups, troubleshoot rigs, and talk BTX.</p>
+        <div class="card-foot"><span class="host">t.me/BTX_Community_Chat</span><span class="go">↗</span></div>
+      </a>
+
+      <a class="card t-social reveal" style="--d:.15s" href="https://t.me/+wy07HLBwE4kwNTkx" target="_blank" rel="noopener noreferrer">
+        <div class="card-top">
+          <span class="idx">17</span>
+          <span class="tags"><span class="tag hot">TELEGRAM</span><span class="tag">MINER</span></span>
+        </div>
+        <h3 class="card-name">matador chat</h3>
+        <p class="card-desc">Telegram group for the matador miner — setup help, tuning tips, and release news from the maintainer.</p>
+        <div class="card-foot"><span class="host">t.me · matador invite</span><span class="go">↗</span></div>
+      </a>
+
+      <a class="card t-social reveal" style="--d:.20s" href="https://t.me/ninjaraiderpool" target="_blank" rel="noopener noreferrer">
+        <div class="card-top">
+          <span class="idx">18</span>
+          <span class="tags"><span class="tag hot">TELEGRAM</span><span class="tag">POOL</span></span>
+        </div>
+        <h3 class="card-name">ninjaraider chat</h3>
+        <p class="card-desc">Telegram group for the ninjaraider pool — payout questions, pool status, and operator updates.</p>
+        <div class="card-foot"><span class="host">t.me/ninjaraiderpool</span><span class="go">↗</span></div>
       </a>
 
     </div>
