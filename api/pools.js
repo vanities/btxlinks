@@ -53,6 +53,12 @@ const SOURCES = {
     const s = direct ?? (frac == null ? null : frac * 100);
     return { share: s, net: num(d?.stats?.network?.network_hash_nps), height: num(d?.chain?.height) };
   },
+  async luckypool() {
+    const d = await fetchJson('https://btx.luckypool.io/api/stats');
+    const pool = num(d?.pool?.hashrate);
+    const net = num(d?.network?.hashrate);
+    return { share: pool != null && net ? (pool / net) * 100 : null, net, height: num(d?.network?.height) };
+  },
   // ninjaraider has no public stat API (WebSocket-only), so the ninjaraider-share
   // GitHub Action scrapes its dashboard every ~20 min and publishes here.
   async ninjaraider() {
