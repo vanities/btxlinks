@@ -18,6 +18,7 @@ Open it in a browser, or host it on any static host (GitHub Pages, Vercel, Netli
 
 ### Official
 - [btx.dev](https://btx.dev/) — **official** developer hub: node releases, docs, REST API, whitepapers, source
+- [BTX Node](https://github.com/btxchain/btx) — **official** reference node (C++): full node, wallet, mining infra; MatMul PoW + post-quantum sigs
 - [BTX Price](https://btxprice.com/) — **official** price dashboard: live model price, market cap, MatMul rate, JSON API
 - [BTX Telegram](https://t.me/BTXtelegram) — **official** Telegram channel (announcements & releases)
 
