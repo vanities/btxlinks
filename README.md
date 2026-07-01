@@ -28,6 +28,7 @@ Open it in a browser, or host it on any static host (GitHub Pages, Vercel, Netli
 - [Byron Pool](https://btxbyronbay.com) — Australian PPLNS collective, self-custody
 - [ninjaraider](https://ninjaraider.com/btx-pplns) — busy PPLNS pool, live dashboard · `stratum ninjaraider.com:44920`
 - [btx-pool](https://btx-pool.com/) — public PPLNS pool with vardiff · `stratum btx-pool.com:3334`
+- [btxpool.org](https://btxpool.org/) — large PPLNS pool, hourly payouts, own CUDA miner · `stratum 43.154.101.226:3333` · steep 12% fee
 
 ### Miners
 - [matador](https://github.com/vanities/matador-miner) — performance GPU miner, ready-to-run binary releases (Linux + Apple Silicon), 1% dev fee
