@@ -414,6 +414,17 @@
   .netchart .legend .sw { width: 10px; height: 10px; border-radius: 3px; flex: none; }
   .netchart .legend .nm { color: var(--muted); white-space: nowrap; }
   .netchart .legend .pc { margin-left: auto; color: var(--ink); font-family: var(--font-display); font-size: 11px; }
+  .netchart .chart-note {
+    flex-basis: 100%;
+    margin: 4px 0 0;
+    padding-top: 14px;
+    border-top: 1px solid var(--line-2);
+    font-size: 11.5px;
+    line-height: 1.6;
+    color: var(--faint);
+  }
+  .netchart .chart-note a { color: var(--amber); text-decoration: none; border-bottom: 1px solid transparent; }
+  .netchart .chart-note a:hover { border-bottom-color: var(--amber); }
   /* ---------- copy-to-clipboard endpoints ---------- */
   .conn {
     align-self: flex-start;
@@ -713,6 +724,9 @@
         </g>
       </svg>
       <ul id="net-legend" class="legend"></ul>
+      <p class="chart-note">
+        Shares are each pool's own live estimate — its measured hashrate divided by its own difficulty-based guess of the network rate, then normalized to 100%. They're approximate, not exact, and a fast-growing network makes the estimates run high. For actual block-win counts (who really found the blocks), see the <a href="https://explorer.btxbyronbay.com/mining.html?range=24h" target="_blank" rel="noopener noreferrer">Byron explorer's 24h mining view ↗</a>.
+      </p>
     </div>
     <div class="grid">
 
