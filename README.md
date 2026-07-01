@@ -30,7 +30,7 @@ Open it in a browser, or host it on any static host (GitHub Pages, Vercel, Netli
 - [ninjaraider](https://ninjaraider.com/btx-pplns) — busy PPLNS pool, live dashboard · `stratum ninjaraider.com:44920`
 - [btx-pool](https://btx-pool.com/) — public PPLNS pool with vardiff · `stratum btx-pool.com:3334`
 - [btxpool.org](https://btxpool.org/) — large PPLNS pool, hourly payouts, own CUDA miner · `stratum 43.154.101.226:3333` · steep 12% fee
-- [luckypool](https://btx.luckypool.io/) — BTX pool on LuckyPool.IO, low 1% fee, open stats API · `stratum btx.luckypool.io:8660`
+- [luckypool](https://btx.luckypool.io/) — BTX pool on LuckyPool.IO, low 1% fee, ~12 regional stratum servers · `stratum btx-us-east.lproute.com:8660`
 
 ### Miners
 - [matador](https://github.com/vanities/matador-miner) — performance GPU miner, ready-to-run binary releases (Linux + Apple Silicon), 1% dev fee
