@@ -59,6 +59,18 @@ const SOURCES = {
     const net = num(d?.network?.hashrate);
     return { share: pool != null && net ? (pool / net) * 100 : null, net, height: num(d?.network?.height) };
   },
+  async ['coin-miners']() {
+    const d = await fetchJson('https://btx.coin-miners.info/api/pool');
+    const net = num(d?.network?.hashps);
+    const modes = Array.isArray(d?.modes) ? d.modes : [];
+    const pool = modes.reduce((sum, m) => sum + (num(m?.hashps) || 0), 0);
+    return { share: net ? (pool / net) * 100 : null, net, height: num(d?.network?.height) };
+  },
+  async diffpool() {
+    const d = await fetchJson('https://diffpool.xyz/btx/api/stats');
+    const mhs = num(d?.network?.net_hashrate_mhs);
+    return { share: num(d?.network?.pool_share_pct), net: mhs == null ? null : mhs * 1e6, height: num(d?.network?.height) };
+  },
   // ninjaraider has no public stat API (WebSocket-only), so the ninjaraider-share
   // GitHub Action scrapes its dashboard every ~20 min and publishes here.
   async ninjaraider() {
