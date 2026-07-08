@@ -35,7 +35,7 @@ Open it in a browser, or host it on any static host (GitHub Pages, Vercel, Netli
 ### Miners
 - [matador](https://github.com/vanities/matador-miner) — performance GPU miner, ready-to-run binary releases (Linux + Apple Silicon), 1% dev fee
 - [easyBTX](https://easybtx.com/) — one-click NVIDIA RTX miner with a built-in wallet, 5% dev fee
-- [nekominer](https://github.com/shatll-s/nekominer-release) — CUDA GPU miner (NVIDIA, Linux), prebuilt binaries, 1% dev fee on BTX
+- [nekominer](https://github.com/nr800/nekominer) — CUDA GPU miner (NVIDIA, Linux), prebuilt binaries, 1% dev fee on BTX
 - [AMDBTX](https://github.com/thekillsquad007/amdbtx) — native AMD GPU miner (ROCm/HIP), Linux + WSL2 + HiveOS, pool or solo, 2% dev fee
 
 ### Wallets
