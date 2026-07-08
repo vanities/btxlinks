@@ -234,6 +234,13 @@
     line-height: 1.4;
   }
   .notice b { color: var(--ink); font-weight: 600; }
+  .notice.danger {
+    border-color: rgba(255, 92, 92, 0.32);
+    border-left-color: #ff5c5c;
+    background: linear-gradient(90deg, rgba(255, 92, 92, 0.08), rgba(255, 92, 92, 0.01));
+    margin: 0 0 20px;
+  }
+  .notice.danger .ic { color: #ff5c5c; }
 
   /* ---------- sections ---------- */
   .section { margin-top: 64px; }
@@ -654,7 +661,7 @@
         that swaps SHA-256 for <b>matrix-multiplication</b> proof-of-work and ECDSA
         for lattice-based, quantum-resistant keys.
       </p>
-      <div class="orient reveal" style="--d:.24s"><span>official</span> · <span>pools</span> · <span>miners</span> · <span>wallets</span> · <span>explorers</span> · <span>community</span></div>
+      <div class="orient reveal" style="--d:.24s"><span>official</span> · <span>pools</span> · <span>miners</span> · <span>wallets</span> · <span>otc</span> · <span>explorers</span> · <span>community</span></div>
     </div>
 
     <!-- matmul motif: a real 2x2 multiply ([7 2;4 9] x [3 5;2 15] = [25 65;30 155]) -->
@@ -1124,6 +1131,66 @@
     </div>
   </section>
 
+  <!-- ===================== OTC ===================== -->
+  <section class="section">
+    <div class="sec-head">
+      <h2>OTC</h2><span class="count">[04]</span><span class="bar"></span>
+    </div>
+    <div class="notice danger reveal" style="--d:.05s">
+      <span class="ic">[!]</span>
+      <div>
+        <b>High scam risk.</b> OTC trading is peer-matched and off-chain — a favorite hunting ground
+        for fake escrow bots, impersonated "admins," and split-payment scams, especially in Telegram
+        groups. <b>Never send funds first</b>, never trust anyone who DMs you first, and double-check
+        you're on the real domain/handle before funding an account or connecting a wallet. None of
+        these are audited or endorsed — you are trusting a stranger with money.
+      </div>
+    </div>
+    <div class="grid">
+
+      <a class="card t-tool reveal" style="--d:.05s" href="https://btx.trade/wallet" target="_blank" rel="noopener noreferrer">
+        <div class="card-top">
+          <span class="idx">22</span>
+          <span class="tags"><span class="tag hot">OTC</span><span class="tag">PRIVATE DESK</span></span>
+        </div>
+        <h3 class="card-name">btx.trade</h3>
+        <p class="card-desc">A private OTC desk for BTX — fund an account, place a private order at your price, and settle instantly. Sign-in required. Community-run and unaudited: verify the domain yourself before funding an account.</p>
+        <div class="card-foot"><span class="host">btx.trade/wallet</span><span class="go">↗</span></div>
+      </a>
+
+      <a class="card t-tool reveal" style="--d:.10s" href="https://buybtx.com/" target="_blank" rel="noopener noreferrer">
+        <div class="card-top">
+          <span class="idx">23</span>
+          <span class="tags"><span class="tag hot">OTC</span><span class="tag">NON-CUSTODIAL</span></span>
+        </div>
+        <h3 class="card-name">buybtx</h3>
+        <p class="card-desc">A non-custodial, closed-book OTC desk — desk-approved escrow matches vetted buyers and sellers, no platform fee, and you hold your own keys throughout. Still peer-matched trading: confirm every counterparty through the desk's own escrow flow, never a DM.</p>
+        <div class="card-foot"><span class="host">buybtx.com</span><span class="go">↗</span></div>
+      </a>
+
+      <a class="card t-tool reveal" style="--d:.15s" href="https://github.com/evxdev/wbtx-eth" target="_blank" rel="noopener noreferrer">
+        <div class="card-top">
+          <span class="idx">24</span>
+          <span class="tags"><span class="tag hot">BRIDGE</span><span class="tag">ETHEREUM</span><span class="tag">WRAPPED</span><span class="tag">WIP</span></span>
+        </div>
+        <h3 class="card-name">WBTX (wbtx-eth)</h3>
+        <p class="card-desc">Ethereum contracts, validator services, and tooling for WBTX — an ERC-20 wrapped BTX bridged through a mint/redeem committee-verifier design. Actively in development, unaudited, and no confirmed production deployment — assume the bridge contracts may still contain vulnerabilities and treat mainnet use as experimental. A public testnet exists to try it before risking real funds.</p>
+        <div class="card-foot"><span class="host">github.com/evxdev/wbtx-eth</span><span class="go">↗</span></div>
+      </a>
+
+      <a class="card t-social reveal" style="--d:.20s" href="https://t.me/BTX_OTC" target="_blank" rel="noopener noreferrer">
+        <div class="card-top">
+          <span class="idx">25</span>
+          <span class="tags"><span class="tag hot">TELEGRAM</span><span class="tag">OTC</span></span>
+        </div>
+        <h3 class="card-name">BTX OTC chat</h3>
+        <p class="card-desc">Community Telegram for BTX OTC deals. Treat any "admin" who DMs you first, too-good offers, or third-party "escrow" bots as scams by default — verify counterparties against the desks above and never send first.</p>
+        <div class="card-foot"><span class="host">t.me/BTX_OTC</span><span class="go">↗</span></div>
+      </a>
+
+    </div>
+  </section>
+
   <!-- ===================== EXPLORERS ===================== -->
   <section class="section">
     <div class="sec-head">
@@ -1133,7 +1200,7 @@
 
       <a class="card t-tool reveal" style="--d:.05s" href="https://explorer.minebtx.com/" target="_blank" rel="noopener noreferrer">
         <div class="card-top">
-          <span class="idx">22</span>
+          <span class="idx">26</span>
           <span class="tags"><span class="tag hot">EXPLORER</span><span class="tag">OPEN SOURCE</span><span class="tag">BLOCKS · TX</span></span>
         </div>
         <h3 class="card-name">BTXplorer</h3>
@@ -1143,7 +1210,7 @@
 
       <a class="card t-tool reveal" style="--d:.10s" href="https://explorer.btxbyronbay.com/" target="_blank" rel="noopener noreferrer">
         <div class="card-top">
-          <span class="idx">23</span>
+          <span class="idx">27</span>
           <span class="tags"><span class="tag hot">EXPLORER</span><span class="tag">BLOCKS · TX</span><span class="tag">STATS</span></span>
         </div>
         <h3 class="card-name">first light</h3>
@@ -1153,7 +1220,7 @@
 
       <a class="card t-tool reveal" style="--d:.15s" href="https://btxinfo.com" target="_blank" rel="noopener noreferrer">
         <div class="card-top">
-          <span class="idx">24</span>
+          <span class="idx">28</span>
           <span class="tags"><span class="tag hot">ANALYTICS</span><span class="tag">MARKET DATA</span><span class="tag">OPEN API</span></span>
         </div>
         <h3 class="card-name">BTXInfo</h3>
@@ -1173,7 +1240,7 @@
 
       <a class="card t-social reveal" style="--d:.05s" href="https://x.com/btxcommunitvfd" target="_blank" rel="noopener noreferrer">
         <div class="card-top">
-          <span class="idx">25</span>
+          <span class="idx">29</span>
           <span class="tags"><span class="tag hot">X</span><span class="tag">COMMUNITY</span></span>
         </div>
         <h3 class="card-name">BTX on X</h3>
@@ -1183,7 +1250,7 @@
 
       <a class="card t-social reveal" style="--d:.10s" href="https://t.me/BTX_Community_Chat" target="_blank" rel="noopener noreferrer">
         <div class="card-top">
-          <span class="idx">26</span>
+          <span class="idx">30</span>
           <span class="tags"><span class="tag hot">TELEGRAM</span><span class="tag">COMMUNITY</span></span>
         </div>
         <h3 class="card-name">BTX Community Chat</h3>
@@ -1193,7 +1260,7 @@
 
       <a class="card t-social reveal" style="--d:.15s" href="https://t.me/+wy07HLBwE4kwNTkx" target="_blank" rel="noopener noreferrer">
         <div class="card-top">
-          <span class="idx">27</span>
+          <span class="idx">31</span>
           <span class="tags"><span class="tag hot">TELEGRAM</span><span class="tag">MINER</span></span>
         </div>
         <h3 class="card-name">matador chat</h3>
@@ -1203,7 +1270,7 @@
 
       <a class="card t-social reveal" style="--d:.20s" href="https://t.me/ninjaraiderpool" target="_blank" rel="noopener noreferrer">
         <div class="card-top">
-          <span class="idx">28</span>
+          <span class="idx">32</span>
           <span class="tags"><span class="tag hot">TELEGRAM</span><span class="tag">POOL</span></span>
         </div>
         <h3 class="card-name">ninjaraider chat</h3>
