@@ -122,7 +122,11 @@ module.exports = async (req, res) => {
     const data = await collect();
     res.setHeader('content-type', 'application/json; charset=utf-8');
     res.setHeader('access-control-allow-origin', '*');
-    res.setHeader('cache-control', 's-maxage=30, stale-while-revalidate=60');
+    // Pool network-share is a slow-moving number and the client only polls every 60s,
+    // so cache hard: collapse near-all concurrent requests (across every edge region,
+    // and across deploys) into one real invocation per ~2 minutes, serving stale for
+    // up to 10 more while it revalidates in the background.
+    res.setHeader('cache-control', 's-maxage=120, stale-while-revalidate=600');
     res.status(200).send(JSON.stringify(data));
   } catch (e) {
     console.error(`[pools] handler error: ${e && e.message}`);
