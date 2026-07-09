@@ -842,6 +842,14 @@
       <h2>Pools</h2><span class="count">[11]</span><span class="bar"></span>
     </div>
     <p class="sec-note">network <span id="net-rate">≈149 MN/s</span> · ~90s blocks · height <span id="net-height">~146,244</span> · pool share (self-reported, normalized) · <span id="net-status">snapshot 2026-07-01</span></p>
+    <div class="notice danger" id="pool-warn" hidden>
+      <span class="ic">[!]</span>
+      <div>
+        <b>Mining centralization risk.</b> <span id="pool-warn-body"></span> A share this large
+        raises 51%-attack and censorship risk for the whole chain — consider pointing hardware at
+        a smaller pool.
+      </div>
+    </div>
     <div id="net-chart" class="netchart" hidden>
       <svg class="donut" viewBox="0 0 42 42" role="img" aria-label="BTX pool network-share distribution">
         <circle class="ring-bg" cx="21" cy="21" r="15.9155" stroke-width="5"></circle>
@@ -1716,6 +1724,7 @@
     });
 
     // Normalize to 100% and paint the bars + donut from the same values so they agree.
+    var CENTRALIZATION_THRESHOLD = 40;
     function render() {
       var ids = Object.keys(RAW);
       var total = ids.reduce(function (a, id) { return a + (RAW[id] || 0); }, 0);
@@ -1725,13 +1734,31 @@
         setBar(b, (RAW[b.getAttribute("data-pool")] || 0) * factor);
       });
 
-      var chart = document.getElementById("net-chart");
-      if (!chart) return;
       var items = ids
         .filter(function (id) { return POOL_META[id]; })
         .map(function (id) {
           return { name: POOL_META[id].name, color: POOL_META[id].color, pct: (RAW[id] || 0) * factor };
         });
+
+      var warn = document.getElementById("pool-warn");
+      var warnBody = document.getElementById("pool-warn-body");
+      if (warn && warnBody) {
+        var dominant = items
+          .filter(function (it) { return it.pct > CENTRALIZATION_THRESHOLD; })
+          .sort(function (a, b) { return b.pct - a.pct; });
+        if (dominant.length) {
+          warnBody.textContent = dominant
+            .map(function (it) { return it.name + " (" + fmtPct(it.pct) + ")"; })
+            .join(", ") + " currently " + (dominant.length > 1 ? "control" : "controls") +
+            " an estimated " + Math.round(dominant[0].pct) + "%+ of network hashrate.";
+          warn.hidden = false;
+        } else {
+          warn.hidden = true;
+        }
+      }
+
+      var chart = document.getElementById("net-chart");
+      if (!chart) return;
       var poolSum = items.reduce(function (a, b) { return a + b.pct; }, 0);
       items.push({ name: "solo / other", color: "#9a9aac", pct: Math.max(0, 100 - poolSum) });
       items.sort(function (a, b) { return b.pct - a.pct; });
