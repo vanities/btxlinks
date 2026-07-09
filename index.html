@@ -661,7 +661,7 @@
         that swaps SHA-256 for <b>matrix-multiplication</b> proof-of-work and ECDSA
         for lattice-based, quantum-resistant keys.
       </p>
-      <div class="orient reveal" style="--d:.24s"><span>official</span> · <span>pools</span> · <span>miners</span> · <span>wallets</span> · <span>otc</span> · <span>exchanges</span> · <span>explorers</span> · <span>community</span></div>
+      <div class="orient reveal" style="--d:.24s"><span>official</span> · <span>pools</span> · <span>miners</span> · <span>wallets</span> · <span>otc</span> · <span>bridge</span> · <span>exchanges</span> · <span>explorers</span> · <span>community</span></div>
     </div>
 
     <!-- matmul motif: a real 2x2 multiply ([7 2;4 9] x [3 5;2 15] = [25 65;30 155]) -->
@@ -1134,7 +1134,7 @@
   <!-- ===================== OTC ===================== -->
   <section class="section">
     <div class="sec-head">
-      <h2>OTC</h2><span class="count">[05]</span><span class="bar"></span>
+      <h2>OTC</h2><span class="count">[03]</span><span class="bar"></span>
     </div>
     <div class="notice danger reveal" style="--d:.05s">
       <span class="ic">[!]</span>
@@ -1168,29 +1168,9 @@
         <div class="card-foot"><span class="host">buybtx.com</span><span class="go">↗</span></div>
       </a>
 
-      <a class="card t-tool reveal" style="--d:.15s" href="https://github.com/evxdev/wbtx-eth" target="_blank" rel="noopener noreferrer">
+      <a class="card t-social reveal" style="--d:.15s" href="https://t.me/BTX_OTC" target="_blank" rel="noopener noreferrer">
         <div class="card-top">
           <span class="idx">24</span>
-          <span class="tags"><span class="tag hot">BRIDGE</span><span class="tag">ETHEREUM</span><span class="tag">WRAPPED</span><span class="tag">WIP</span></span>
-        </div>
-        <h3 class="card-name">WBTX (wbtx-eth)</h3>
-        <p class="card-desc">Ethereum contracts, validator services, and tooling for WBTX — an ERC-20 wrapped BTX bridged through a mint/redeem committee-verifier design. Actively in development, unaudited, and no confirmed production deployment — assume the bridge contracts may still contain vulnerabilities and treat mainnet use as experimental. A public testnet exists to try it before risking real funds.</p>
-        <div class="card-foot"><span class="host">github.com/evxdev/wbtx-eth</span><span class="go">↗</span></div>
-      </a>
-
-      <a class="card t-tool reveal" style="--d:.20s" href="https://btx.supply/" target="_blank" rel="noopener noreferrer">
-        <div class="card-top">
-          <span class="idx">25</span>
-          <span class="tags"><span class="tag hot">TESTNET</span><span class="tag">BRIDGE</span><span class="tag">WIP</span></span>
-        </div>
-        <h3 class="card-name">btx.supply</h3>
-        <p class="card-desc">The public test workspace for the WBTX bridge — connect a test wallet, request funds from the faucet, and run through deposit (BTX→WBTX) and redeem (WBTX→BTX) flows. Resettable, no mainnet value; treat it as a way to poke at the still-unaudited bridge before it touches real funds, not a signal that mainnet is ready.</p>
-        <div class="card-foot"><span class="host">btx.supply</span><span class="go">↗</span></div>
-      </a>
-
-      <a class="card t-social reveal" style="--d:.25s" href="https://t.me/BTX_OTC" target="_blank" rel="noopener noreferrer">
-        <div class="card-top">
-          <span class="idx">26</span>
           <span class="tags"><span class="tag hot">TELEGRAM</span><span class="tag">OTC</span></span>
         </div>
         <h3 class="card-name">BTX OTC chat</h3>
@@ -1201,19 +1181,48 @@
     </div>
   </section>
 
-  <!-- ===================== EXCHANGES ===================== -->
+  <!-- ===================== BRIDGE ===================== -->
   <section class="section">
     <div class="sec-head">
-      <h2>Exchanges</h2><span class="count">[01]</span><span class="bar"></span>
+      <h2>Bridge</h2><span class="count">[02]</span><span class="bar"></span>
     </div>
     <div class="notice danger reveal" style="--d:.05s">
       <span class="ic">[!]</span>
       <div>
-        <b>Ticker collision.</b> The "BTX" symbol is also used by an older, unrelated 2017
-        Bitcoin fork (BitCore) on some exchanges and trackers. Before depositing or withdrawing,
-        confirm the listing is actually tracking <b>this</b> post-quantum MatMul-PoW chain — wrong
-        network, wrong coin, unrecoverable funds.
+        <b>Experimental smart contracts.</b> Both entries below are unaudited, work-in-progress
+        bridge software with no confirmed production deployment. Assume the contracts can contain
+        bugs or exploits — try the testnet first, and don't bridge more than you can afford to lose.
       </div>
+    </div>
+    <div class="grid">
+
+      <a class="card t-tool reveal" style="--d:.05s" href="https://github.com/evxdev/wbtx-eth" target="_blank" rel="noopener noreferrer">
+        <div class="card-top">
+          <span class="idx">25</span>
+          <span class="tags"><span class="tag hot">BRIDGE</span><span class="tag">ETHEREUM</span><span class="tag">WRAPPED</span><span class="tag">WIP</span></span>
+        </div>
+        <h3 class="card-name">WBTX (wbtx-eth)</h3>
+        <p class="card-desc">Ethereum contracts, validator services, and tooling for WBTX — an ERC-20 wrapped BTX bridged through a mint/redeem committee-verifier design. Actively in development, unaudited, and no confirmed production deployment — assume the bridge contracts may still contain vulnerabilities and treat mainnet use as experimental. A public testnet exists to try it before risking real funds.</p>
+        <div class="card-foot"><span class="host">github.com/evxdev/wbtx-eth</span><span class="go">↗</span></div>
+      </a>
+
+      <a class="card t-tool reveal" style="--d:.10s" href="https://btx.supply/" target="_blank" rel="noopener noreferrer">
+        <div class="card-top">
+          <span class="idx">26</span>
+          <span class="tags"><span class="tag hot">TESTNET</span><span class="tag">BRIDGE</span><span class="tag">WIP</span></span>
+        </div>
+        <h3 class="card-name">btx.supply</h3>
+        <p class="card-desc">The public test workspace for the WBTX bridge — connect a test wallet, request funds from the faucet, and run through deposit (BTX→WBTX) and redeem (WBTX→BTX) flows. Resettable, no mainnet value; treat it as a way to poke at the still-unaudited bridge before it touches real funds, not a signal that mainnet is ready.</p>
+        <div class="card-foot"><span class="host">btx.supply</span><span class="go">↗</span></div>
+      </a>
+
+    </div>
+  </section>
+
+  <!-- ===================== EXCHANGES ===================== -->
+  <section class="section">
+    <div class="sec-head">
+      <h2>Exchanges</h2><span class="count">[01]</span><span class="bar"></span>
     </div>
     <div class="grid">
 
@@ -1223,7 +1232,7 @@
           <span class="tags"><span class="tag hot">EXCHANGE</span><span class="tag">CEX</span><span class="tag">BTX/USDT</span></span>
         </div>
         <h3 class="card-name">SafeTrade</h3>
-        <p class="card-desc">A centralized exchange with a live BTX/USDT spot market. Double-check the deposit network and coin details on the listing match this chain before moving funds — see the ticker-collision note above.</p>
+        <p class="card-desc">A centralized exchange with a live BTX/USDT spot market.</p>
         <div class="card-foot"><span class="host">safetrade.com</span><span class="go">↗</span></div>
       </a>
 
