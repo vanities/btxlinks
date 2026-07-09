@@ -39,6 +39,10 @@
     --green:     #86e8a0;
     --violet:    #b79cff;
     --rose:      #ff9ec4;
+    --lime:      #d7f279;
+    --teal:      #6ef2d1;
+    --blue:      #82b4ff;
+    --fuchsia:   #dd93ff;
     --font-display: 'Martian Mono', ui-monospace, 'SFMono-Regular', monospace;
     --font-body:    'IBM Plex Mono', ui-monospace, 'SFMono-Regular', monospace;
   }
@@ -170,7 +174,18 @@
     text-transform: uppercase;
     color: var(--faint);
   }
-  .orient span { color: var(--cyan); }
+  .orient a {
+    color: var(--cyan);
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+    cursor: pointer;
+    transition: color 0.15s ease, border-color 0.15s ease;
+  }
+  .orient a:hover,
+  .orient a:focus-visible {
+    color: var(--ink);
+    border-bottom-color: var(--cyan);
+  }
 
   /* matmul motif */
   .matmul {
@@ -296,10 +311,14 @@
     transition: transform 0.25s cubic-bezier(0.2, 0.7, 0.2, 1),
                 border-color 0.25s ease, background 0.25s ease;
   }
-  .card.t-miner  { --c: var(--cyan); }
-  .card.t-wallet { --c: var(--green); }
-  .card.t-tool   { --c: var(--violet); }
-  .card.t-social { --c: var(--rose); }
+  .card.t-pool     { --c: var(--lime); }
+  .card.t-miner    { --c: var(--cyan); }
+  .card.t-wallet   { --c: var(--green); }
+  .card.t-otc      { --c: var(--teal); }
+  .card.t-bridge   { --c: var(--blue); }
+  .card.t-exchange { --c: var(--fuchsia); }
+  .card.t-tool     { --c: var(--violet); }
+  .card.t-social   { --c: var(--rose); }
 
   .card::before {
     content: "";
@@ -661,7 +680,7 @@
         that swaps SHA-256 for <b>matrix-multiplication</b> proof-of-work and ECDSA
         for lattice-based, quantum-resistant keys.
       </p>
-      <div class="orient reveal" style="--d:.24s"><span>official</span> · <span>pools</span> · <span>miners</span> · <span>wallets</span> · <span>otc</span> · <span>bridge</span> · <span>exchanges</span> · <span>explorers</span> · <span>community</span></div>
+      <div class="orient reveal" style="--d:.24s"><a href="#official">official</a> · <a href="#pools">pools</a> · <a href="#miners">miners</a> · <a href="#wallets">wallets</a> · <a href="#otc">otc</a> · <a href="#bridge">bridge</a> · <a href="#exchanges">exchanges</a> · <a href="#explorers">explorers</a> · <a href="#community">community</a></div>
     </div>
 
     <!-- matmul motif: a real 2x2 multiply ([7 2;4 9] x [3 5;2 15] = [25 65;30 155]) -->
@@ -686,7 +705,7 @@
   </div>
 
   <!-- ===================== OFFICIAL ===================== -->
-  <section class="section">
+  <section class="section" id="official">
     <div class="sec-head">
       <h2>Official</h2><span class="count">[04]</span><span class="bar"></span>
     </div>
@@ -736,7 +755,7 @@
   </section>
 
   <!-- ===================== POOLS ===================== -->
-  <section class="section">
+  <section class="section" id="pools">
     <div class="sec-head">
       <h2>Pools</h2><span class="count">[10]</span><span class="bar"></span>
     </div>
@@ -1002,7 +1021,7 @@
   </section>
 
   <!-- ===================== MINERS ===================== -->
-  <section class="section">
+  <section class="section" id="miners">
     <div class="sec-head">
       <h2>Miners</h2><span class="count">[05]</span><span class="bar"></span>
     </div>
@@ -1102,7 +1121,7 @@
   </section>
 
   <!-- ===================== WALLETS ===================== -->
-  <section class="section">
+  <section class="section" id="wallets">
     <div class="sec-head">
       <h2>Wallets</h2><span class="count">[02]</span><span class="bar"></span>
     </div>
@@ -1132,7 +1151,7 @@
   </section>
 
   <!-- ===================== OTC ===================== -->
-  <section class="section">
+  <section class="section" id="otc">
     <div class="sec-head">
       <h2>OTC</h2><span class="count">[03]</span><span class="bar"></span>
     </div>
@@ -1148,7 +1167,7 @@
     </div>
     <div class="grid">
 
-      <a class="card t-tool reveal" style="--d:.05s" href="https://btx.trade/wallet" target="_blank" rel="noopener noreferrer">
+      <a class="card t-otc reveal" style="--d:.05s" href="https://btx.trade/wallet" target="_blank" rel="noopener noreferrer">
         <div class="card-top">
           <span class="idx">22</span>
           <span class="tags"><span class="tag hot">OTC</span><span class="tag">PRIVATE DESK</span></span>
@@ -1158,7 +1177,7 @@
         <div class="card-foot"><span class="host">btx.trade/wallet</span><span class="go">↗</span></div>
       </a>
 
-      <a class="card t-tool reveal" style="--d:.10s" href="https://buybtx.com/" target="_blank" rel="noopener noreferrer">
+      <a class="card t-otc reveal" style="--d:.10s" href="https://buybtx.com/" target="_blank" rel="noopener noreferrer">
         <div class="card-top">
           <span class="idx">23</span>
           <span class="tags"><span class="tag hot">OTC</span><span class="tag">NON-CUSTODIAL</span></span>
@@ -1182,7 +1201,7 @@
   </section>
 
   <!-- ===================== BRIDGE ===================== -->
-  <section class="section">
+  <section class="section" id="bridge">
     <div class="sec-head">
       <h2>Bridge</h2><span class="count">[02]</span><span class="bar"></span>
     </div>
@@ -1196,7 +1215,7 @@
     </div>
     <div class="grid">
 
-      <a class="card t-tool reveal" style="--d:.05s" href="https://github.com/evxdev/wbtx-eth" target="_blank" rel="noopener noreferrer">
+      <a class="card t-bridge reveal" style="--d:.05s" href="https://github.com/evxdev/wbtx-eth" target="_blank" rel="noopener noreferrer">
         <div class="card-top">
           <span class="idx">25</span>
           <span class="tags"><span class="tag hot">BRIDGE</span><span class="tag">ETHEREUM</span><span class="tag">WRAPPED</span><span class="tag">WIP</span></span>
@@ -1206,7 +1225,7 @@
         <div class="card-foot"><span class="host">github.com/evxdev/wbtx-eth</span><span class="go">↗</span></div>
       </a>
 
-      <a class="card t-tool reveal" style="--d:.10s" href="https://btx.supply/" target="_blank" rel="noopener noreferrer">
+      <a class="card t-bridge reveal" style="--d:.10s" href="https://btx.supply/" target="_blank" rel="noopener noreferrer">
         <div class="card-top">
           <span class="idx">26</span>
           <span class="tags"><span class="tag hot">TESTNET</span><span class="tag">BRIDGE</span><span class="tag">WIP</span></span>
@@ -1220,13 +1239,13 @@
   </section>
 
   <!-- ===================== EXCHANGES ===================== -->
-  <section class="section">
+  <section class="section" id="exchanges">
     <div class="sec-head">
       <h2>Exchanges</h2><span class="count">[01]</span><span class="bar"></span>
     </div>
     <div class="grid">
 
-      <a class="card t-tool reveal" style="--d:.05s" href="https://safetrade.com/exchange/BTX-USDT?type=basic" target="_blank" rel="noopener noreferrer">
+      <a class="card t-exchange reveal" style="--d:.05s" href="https://safetrade.com/exchange/BTX-USDT?type=basic" target="_blank" rel="noopener noreferrer">
         <div class="card-top">
           <span class="idx">27</span>
           <span class="tags"><span class="tag hot">EXCHANGE</span><span class="tag">CEX</span><span class="tag">BTX/USDT</span></span>
@@ -1240,7 +1259,7 @@
   </section>
 
   <!-- ===================== EXPLORERS ===================== -->
-  <section class="section">
+  <section class="section" id="explorers">
     <div class="sec-head">
       <h2>Explorers</h2><span class="count">[03]</span><span class="bar"></span>
     </div>
@@ -1280,7 +1299,7 @@
   </section>
 
   <!-- ===================== COMMUNITY ===================== -->
-  <section class="section">
+  <section class="section" id="community">
     <div class="sec-head">
       <h2>Community</h2><span class="count">[04]</span><span class="bar"></span>
     </div>
