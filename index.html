@@ -168,38 +168,93 @@
   }
   .lead b { color: var(--ink); font-weight: 600; }
   .orient {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 8px;
     font-family: var(--font-display);
-    font-size: 11.5px;
-    letter-spacing: 0.12em;
+    font-size: 11px;
+    letter-spacing: 0.08em;
     text-transform: uppercase;
-    color: var(--faint);
   }
   .orient-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
     color: var(--faint);
-    margin-right: 10px;
-    padding-right: 10px;
-    border-right: 1px solid var(--line);
+    margin-right: 4px;
+  }
+  .orient-arrow { animation: nudge 1.6s ease-in-out infinite; }
+  @keyframes nudge {
+    0%, 100% { transform: translateY(0); opacity: 0.6; }
+    50%      { transform: translateY(3px); opacity: 1; }
   }
   .orient a {
+    --pc: var(--cyan);
     display: inline-block;
-    color: var(--cyan);
+    color: var(--pc);
     text-decoration: none;
-    border-bottom: 1px solid color-mix(in srgb, var(--cyan) 35%, transparent);
-    border-radius: 3px;
-    padding: 1px 3px;
-    margin: 0 -3px;
+    background: color-mix(in srgb, var(--pc) 8%, transparent);
+    border: 1px solid color-mix(in srgb, var(--pc) 35%, transparent);
+    border-radius: 999px;
+    padding: 4px 11px;
     cursor: pointer;
-    transition: color 0.15s ease, border-color 0.15s ease, background 0.15s ease;
+    transition: color 0.15s ease, border-color 0.15s ease, background 0.15s ease,
+                transform 0.15s ease, box-shadow 0.15s ease;
   }
   .orient a:hover,
   .orient a:focus-visible {
     color: var(--bg);
-    background: var(--cyan);
-    border-bottom-color: var(--cyan);
+    background: var(--pc);
+    border-color: var(--pc);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 14px -4px var(--pc);
   }
 
   /* matmul motif */
+  .matmul-wrap {
+    position: relative;
+    padding: 24px 22px 16px;
+    border: 1px solid var(--line);
+    border-radius: 18px;
+    background:
+      radial-gradient(120% 140% at 50% -10%, rgba(255, 180, 58, 0.09), transparent 65%),
+      var(--surface);
+    box-shadow: 0 24px 60px -32px rgba(255, 180, 58, 0.35);
+    overflow: hidden;
+    transition: border-color 0.25s ease, box-shadow 0.25s ease;
+  }
+  .matmul-wrap:hover {
+    border-color: color-mix(in srgb, var(--amber) 45%, var(--line));
+    box-shadow: 0 24px 60px -28px rgba(255, 180, 58, 0.5);
+  }
+  .matmul-wrap::before {
+    content: "";
+    position: absolute;
+    inset: -50% -10%;
+    background: linear-gradient(115deg, transparent 40%, rgba(255, 180, 58, 0.12) 50%, transparent 60%);
+    animation: sweep 6s ease-in-out infinite;
+    pointer-events: none;
+  }
+  @keyframes sweep {
+    0%, 100% { transform: translateX(-55%); }
+    50%      { transform: translateX(55%); }
+  }
+  .matmul-cap {
+    position: relative;
+    margin-top: 16px;
+    padding-top: 12px;
+    border-top: 1px dashed var(--line-2);
+    font-family: var(--font-display);
+    font-size: 10px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--faint);
+    text-align: center;
+  }
+  .matmul-cap b { color: var(--amber); font-weight: 600; }
   .matmul {
+    position: relative;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -650,6 +705,8 @@
     #field { display: none; }
     .reveal { opacity: 1; animation: none; }
     .mtx.out span { animation: none; opacity: 1; }
+    .matmul-wrap::before { animation: none; opacity: 0; }
+    .orient-arrow { animation: none; }
     .card, .go, .card::before, .cp { transition: none; }
     .cp.is-copied .cp-done {
       animation: none;
@@ -691,16 +748,30 @@
         that swaps SHA-256 for <b>matrix-multiplication</b> proof-of-work and ECDSA
         for lattice-based, quantum-resistant keys.
       </p>
-      <div class="orient reveal" style="--d:.24s"><span class="orient-label">jump to ↓</span><a href="#official">official</a> · <a href="#pools">pools</a> · <a href="#miners">miners</a> · <a href="#wallets">wallets</a> · <a href="#otc">otc</a> · <a href="#bridge">bridge</a> · <a href="#exchanges">exchanges</a> · <a href="#explorers">explorers</a> · <a href="#community">community</a></div>
+      <div class="orient reveal" style="--d:.24s">
+        <span class="orient-label">jump to<svg class="orient-arrow" viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="12" y1="5" x2="12" y2="19"/><polyline points="6 13 12 19 18 13"/></svg></span>
+        <a href="#official" style="--pc:var(--amber)">official</a>
+        <a href="#pools" style="--pc:var(--lime)">pools</a>
+        <a href="#miners" style="--pc:var(--cyan)">miners</a>
+        <a href="#wallets" style="--pc:var(--green)">wallets</a>
+        <a href="#otc" style="--pc:var(--teal)">otc</a>
+        <a href="#bridge" style="--pc:var(--blue)">bridge</a>
+        <a href="#exchanges" style="--pc:var(--fuchsia)">exchanges</a>
+        <a href="#explorers" style="--pc:var(--violet)">explorers</a>
+        <a href="#community" style="--pc:var(--rose)">community</a>
+      </div>
     </div>
 
     <!-- matmul motif: a real 2x2 multiply ([7 2;4 9] x [3 5;2 15] = [25 65;30 155]) -->
-    <div class="matmul reveal" style="--d:.30s" aria-hidden="true">
-      <div class="mtx"><span>7</span><span>2</span><span>4</span><span>9</span></div>
-      <span class="op">×</span>
-      <div class="mtx"><span>3</span><span>5</span><span>2</span><span>15</span></div>
-      <span class="op">=</span>
-      <div class="mtx out"><span>25</span><span>65</span><span>30</span><span>155</span></div>
+    <div class="matmul-wrap reveal" style="--d:.30s" aria-hidden="true">
+      <div class="matmul">
+        <div class="mtx"><span>7</span><span>2</span><span>4</span><span>9</span></div>
+        <span class="op">×</span>
+        <div class="mtx"><span>3</span><span>5</span><span>2</span><span>15</span></div>
+        <span class="op">=</span>
+        <div class="mtx out"><span>25</span><span>65</span><span>30</span><span>155</span></div>
+      </div>
+      <div class="matmul-cap">A × B mod <b>2³¹−1</b> · matmul proof-of-work</div>
     </div>
   </header>
 
