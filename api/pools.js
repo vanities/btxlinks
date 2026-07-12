@@ -75,6 +75,12 @@ const SOURCES = {
     const d = await fetchJson('https://pool.ariabrain.com/btx-stats.json');
     return { share: num(d?.pool_share_pct), net: num(d?.network_hashrate_raw), height: num(d?.height) };
   },
+  async tigerpool() {
+    const d = await fetchJson('https://btx.tiger-pool.com/api/stats');
+    const pool = num(d?.hashrate);
+    const net = num(d?.chartData?.[d.chartData.length - 1]?.networkHashrate);
+    return { share: pool != null && net ? (pool / net) * 100 : null, net, height: null };
+  },
   // ninjaraider has no public stat API (WebSocket-only), so the ninjaraider-share
   // GitHub Action scrapes its dashboard every ~20 min and publishes here.
   async ninjaraider() {
