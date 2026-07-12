@@ -128,11 +128,12 @@ module.exports = async (req, res) => {
     const data = await collect();
     res.setHeader('content-type', 'application/json; charset=utf-8');
     res.setHeader('access-control-allow-origin', '*');
-    // Pool network-share is a slow-moving number and the client only polls every 60s,
-    // so cache hard: collapse near-all concurrent requests (across every edge region,
-    // and across deploys) into one real invocation per ~2 minutes, serving stale for
-    // up to 10 more while it revalidates in the background.
-    res.setHeader('cache-control', 's-maxage=120, stale-while-revalidate=600');
+    // Fluid Compute budget is tight, and pool network-share doesn't need to be
+    // fresher than daily. s-maxage=24h means each edge region invokes this at most
+    // ~once/day; stale-while-revalidate=7d means even a quiet region just keeps
+    // serving the last good snapshot (never a hard miss) while it quietly
+    // revalidates in the background.
+    res.setHeader('cache-control', 's-maxage=86400, stale-while-revalidate=604800');
     res.status(200).send(JSON.stringify(data));
   } catch (e) {
     console.error(`[pools] handler error: ${e && e.message}`);
