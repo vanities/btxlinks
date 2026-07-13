@@ -360,6 +360,14 @@
     color: var(--rose);
     white-space: nowrap;
   }
+  .announce-amber {
+    border-bottom-color: rgba(255, 180, 58, 0.25);
+    background: linear-gradient(90deg, rgba(255, 180, 58, 0.1), rgba(255, 180, 58, 0.03));
+  }
+  .announce-amber:hover { background: linear-gradient(90deg, rgba(255, 180, 58, 0.18), rgba(255, 180, 58, 0.06)); }
+  .announce-amber .announce-badge { background: var(--amber); }
+  .announce-amber b { color: var(--amber); }
+  .announce-amber .announce-cta { color: var(--amber); }
 
   /* ---------- sections ---------- */
   .section { margin-top: 64px; }
@@ -767,6 +775,12 @@
   <span class="announce-badge">NEW</span>
   <span>The community Telegram has a new home — <b>t.me/btx_chain</b>. Come say hi.</span>
   <span class="announce-cta">Join chat →</span>
+</a>
+
+<a class="announce announce-amber reveal" href="/pq-framework.pdf" target="_blank" rel="noopener noreferrer">
+  <span class="announce-badge">PROPOSAL</span>
+  <span>A community-written <b>post-quantum digital-asset regulatory framework</b> pitching BTX as a reference standard (PDF). Independent — not an SEC or CFTC document.</span>
+  <span class="announce-cta">Read it →</span>
 </a>
 
 <div class="wrap">
