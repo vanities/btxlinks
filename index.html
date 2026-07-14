@@ -414,6 +414,38 @@
     gap: 16px;
   }
 
+  /* ---------- section banner ---------- */
+  /* 16:9 source, letterboxed to a band so it doesn't dwarf the cards below it */
+  .sec-banner {
+    display: block;
+    position: relative;
+    margin-bottom: 16px;
+    border: 1px solid var(--line);
+    border-radius: 13px;
+    overflow: hidden;
+    line-height: 0;
+    transition: border-color 0.25s ease, transform 0.25s cubic-bezier(0.2, 0.7, 0.2, 1);
+  }
+  .sec-banner img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    object-position: center;
+    display: block;
+  }
+  .sec-banner:hover {
+    transform: translateY(-3px);
+    border-color: color-mix(in srgb, var(--amber) 45%, transparent);
+  }
+  .sec-banner:focus-visible {
+    outline: none;
+    border-color: var(--amber);
+    box-shadow: 0 0 0 3px color-mix(in srgb, var(--amber) 25%, transparent);
+  }
+  @media (max-width: 760px) {
+    .sec-banner img { height: 140px; }
+  }
+
   /* ---------- card ---------- */
   .card {
     --c: var(--amber);
@@ -901,15 +933,15 @@
         <div class="card-foot"><span class="host">btxprice.com</span><span class="go">↗</span></div>
       </a>
 
-      <div class="card card-void reveal" style="--d:.15s">
+      <a class="card reveal" style="--d:.15s" href="https://t.me/btx_ecosystem" target="_blank" rel="noopener noreferrer">
         <div class="card-top">
           <span class="idx">04</span>
-          <span class="tags"><span class="tag">TELEGRAM</span><span class="tag">PENDING</span></span>
+          <span class="tags"><span class="tag official">OFFICIAL</span><span class="tag">TELEGRAM</span><span class="tag">NEW</span></span>
         </div>
         <h3 class="card-name">BTX Telegram</h3>
-        <p class="card-desc">Link temporarily removed. This slot will be filled once there is a verified channel to point at.</p>
-        <div class="card-foot"><span class="host">link removed</span></div>
-      </div>
+        <p class="card-desc">The BTX Telegram — announcements, releases, and community chat now live in one channel. This replaces the old announcement channel and community chat, both of which have been retired.</p>
+        <div class="card-foot"><span class="host">t.me/btx_ecosystem</span><span class="go">↗</span></div>
+      </a>
 
     </div>
   </section>
@@ -1564,6 +1596,12 @@
     <div class="sec-head">
       <h2>Community</h2><span class="count">[05]</span><span class="bar"></span>
     </div>
+
+    <a class="sec-banner reveal" style="--d:.03s" href="https://t.me/btx_ecosystem" target="_blank" rel="noopener noreferrer">
+      <img src="/btxcom.jpg" width="1280" height="720" loading="lazy" decoding="async"
+           alt="BTX Community — Mine. Verify. Build.">
+    </a>
+
     <div class="grid">
 
       <a class="card t-social reveal" style="--d:.05s" href="https://x.com/btxcommunitvfd" target="_blank" rel="noopener noreferrer">
@@ -1576,15 +1614,15 @@
         <div class="card-foot"><span class="host">x.com/btxcommunitvfd</span><span class="go">↗</span></div>
       </a>
 
-      <div class="card card-void reveal" style="--d:.10s">
+      <a class="card t-social reveal" style="--d:.10s" href="https://t.me/btx_ecosystem" target="_blank" rel="noopener noreferrer">
         <div class="card-top">
           <span class="idx">36</span>
-          <span class="tags"><span class="tag">TELEGRAM</span><span class="tag">PENDING</span></span>
+          <span class="tags"><span class="tag hot">TELEGRAM</span><span class="tag">COMMUNITY</span><span class="tag">NEW</span></span>
         </div>
         <h3 class="card-name">BTX Community Chat</h3>
-        <p class="card-desc">Link temporarily removed. This slot will be filled once there is a verified chat to point at.</p>
-        <div class="card-foot"><span class="host">link removed</span></div>
-      </div>
+        <p class="card-desc">Community chat has merged into the main BTX Telegram — the same channel listed under Official. Open chat for miners and holders, alongside announcements and releases.</p>
+        <div class="card-foot"><span class="host">t.me/btx_ecosystem</span><span class="go">↗</span></div>
+      </a>
 
       <a class="card t-social reveal" style="--d:.15s" href="https://t.me/+wy07HLBwE4kwNTkx" target="_blank" rel="noopener noreferrer">
         <div class="card-top">
