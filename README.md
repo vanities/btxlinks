@@ -20,7 +20,7 @@ Open it in a browser, or host it on any static host (GitHub Pages, Vercel, Netli
 - [btx.dev](https://btx.dev/) — **official** developer hub: node releases, docs, REST API, whitepapers, source
 - [BTX Node](https://github.com/btxchain/btx) — **official** reference node (C++): full node, wallet, mining infra; MatMul PoW + post-quantum sigs
 - [BTX Price](https://btxprice.com/) — **official** price dashboard: live model price, market cap, MatMul rate, JSON API
-- [BTX Telegram](https://t.me/BTXtelegram) — **official** Telegram channel (announcements & releases)
+- BTX Telegram — **official** Telegram channel: link temporarily removed, pending a verified replacement
 
 ### Pools
 - [minebtx](https://minebtx.com) — no-node pool with a one-line installer, live dashboard + block explorer
@@ -48,7 +48,7 @@ Open it in a browser, or host it on any static host (GitHub Pages, Vercel, Netli
 
 ### Community
 - [BTX on X](https://x.com/btxcommunitvfd) — community X account
-- [BTX Community Chat](https://t.me/BTX_Community_Chat) — main community Telegram
+- BTX Community Chat — main community Telegram: link temporarily removed, pending a verified replacement
 - [matador chat](https://t.me/+wy07HLBwE4kwNTkx) — Telegram group for the matador miner
 - [ninjaraider chat](https://t.me/ninjaraiderpool) — Telegram group for the ninjaraider pool
 
