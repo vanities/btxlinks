@@ -415,11 +415,14 @@
   }
 
   /* ---------- section banner ---------- */
-  /* 16:9 source, letterboxed to a band so it doesn't dwarf the cards below it */
+  /* 16:9 source shown whole — no crop. Width is capped because at full page
+     width the 16:9 frame runs ~600px tall and pushes the cards off-screen. */
   .sec-banner {
     display: block;
     position: relative;
-    margin-bottom: 16px;
+    width: 100%;
+    max-width: 720px;
+    margin: 0 auto 16px;
     border: 1px solid var(--line);
     border-radius: 13px;
     overflow: hidden;
@@ -428,9 +431,8 @@
   }
   .sec-banner img {
     width: 100%;
-    height: 200px;
-    object-fit: cover;
-    object-position: center;
+    height: auto;
+    aspect-ratio: 16 / 9;
     display: block;
   }
   .sec-banner:hover {
@@ -441,9 +443,6 @@
     outline: none;
     border-color: var(--amber);
     box-shadow: 0 0 0 3px color-mix(in srgb, var(--amber) 25%, transparent);
-  }
-  @media (max-width: 760px) {
-    .sec-banner img { height: 140px; }
   }
 
   /* ---------- card ---------- */
@@ -1610,24 +1609,24 @@
 
     <div class="grid">
 
-      <a class="card t-social reveal" style="--d:.05s" href="https://x.com/btxcommunitvfd" target="_blank" rel="noopener noreferrer">
+      <a class="card t-social reveal" style="--d:.05s" href="https://t.me/btx_ecosystem" target="_blank" rel="noopener noreferrer">
         <div class="card-top">
           <span class="idx">35</span>
-          <span class="tags"><span class="tag hot">X</span><span class="tag">COMMUNITY</span></span>
-        </div>
-        <h3 class="card-name">BTX on X</h3>
-        <p class="card-desc">Community account for BTX on X — news, mining milestones, and signal-boosting across the ecosystem.</p>
-        <div class="card-foot"><span class="host">x.com/btxcommunitvfd</span><span class="go">↗</span></div>
-      </a>
-
-      <a class="card t-social reveal" style="--d:.10s" href="https://t.me/btx_ecosystem" target="_blank" rel="noopener noreferrer">
-        <div class="card-top">
-          <span class="idx">36</span>
           <span class="tags"><span class="tag hot">TELEGRAM</span><span class="tag">COMMUNITY</span><span class="tag">NEW</span></span>
         </div>
         <h3 class="card-name">BTX Community Chat</h3>
         <p class="card-desc">Community chat has merged into the main BTX Telegram — the same channel listed under Official. Open chat for miners and holders, alongside announcements and releases.</p>
         <div class="card-foot"><span class="host">t.me/btx_ecosystem</span><span class="go">↗</span></div>
+      </a>
+
+      <a class="card t-social reveal" style="--d:.10s" href="https://x.com/btxcommunitvfd" target="_blank" rel="noopener noreferrer">
+        <div class="card-top">
+          <span class="idx">36</span>
+          <span class="tags"><span class="tag hot">X</span><span class="tag">COMMUNITY</span></span>
+        </div>
+        <h3 class="card-name">BTX on X</h3>
+        <p class="card-desc">Community account for BTX on X — news, mining milestones, and signal-boosting across the ecosystem.</p>
+        <div class="card-foot"><span class="host">x.com/btxcommunitvfd</span><span class="go">↗</span></div>
       </a>
 
       <a class="card t-social reveal" style="--d:.15s" href="https://t.me/+wy07HLBwE4kwNTkx" target="_blank" rel="noopener noreferrer">
