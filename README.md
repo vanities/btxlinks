@@ -47,7 +47,7 @@ Open it in a browser, or host it on any static host (GitHub Pages, Vercel, Netli
 - [first light](https://explorer.btxbyronbay.com/) — Byron Pool's BTX explorer; blocks, transactions, and network/chain-health stats
 
 ### Community
-- [BTX on X](https://x.com/btxcommunitvfd) — community X account
+- [BTX on X](https://x.com/btxcommunity) — community X account
 - [BTX Community Chat](https://t.me/btx_ecosystem) — main community Telegram; private — same gate as above, verifying lets you into both
 - [matador chat](https://t.me/+wy07HLBwE4kwNTkx) — Telegram group for the matador miner
 - [ninjaraider chat](https://t.me/ninjaraiderpool) — Telegram group for the ninjaraider pool
