@@ -24,13 +24,7 @@ Open it in a browser, or host it on any static host (GitHub Pages, Vercel, Netli
 
 ### Pools
 - [minebtx](https://minebtx.com) — no-node pool with a one-line installer, live dashboard + block explorer
-- [poolbtx](https://poolbtx.com) — live payouts, per-machine scoring · `stratum poolbtx.com:3333`
-- [bitminerpool](https://bitminerpool.xyz) — alternate pool endpoint
 - [Byron Pool](https://btxbyronbay.com) — Australian PPLNS collective, self-custody
-- [ninjaraider](https://ninjaraider.com/btx-pplns) — busy PPLNS pool, live dashboard · `stratum ninjaraider.com:44920`
-- [btx-pool](https://btx-pool.com/) — public PPLNS pool with vardiff · `stratum btx-pool.com:3334`
-- [btxpool.org](https://btxpool.org/) — large PPLNS pool, hourly payouts, own CUDA miner · `stratum 43.154.101.226:3333` · steep 12% fee
-- [luckypool](https://btx.luckypool.io/) — BTX pool on LuckyPool.IO, low 1% fee, ~12 regional stratum servers · `stratum btx-us-east.lproute.com:8660`
 
 ### Miners
 - [matador](https://github.com/vanities/matador-miner) — performance GPU miner, ready-to-run binary releases (Linux + Apple Silicon), 1% dev fee
@@ -50,7 +44,6 @@ Open it in a browser, or host it on any static host (GitHub Pages, Vercel, Netli
 - [BTX on X](https://x.com/btxcommunity) — community X account
 - [BTX Community Chat](https://t.me/btx_ecosystem) — main community Telegram; private — same gate as above, verifying lets you into both
 - [matador chat](https://t.me/+wy07HLBwE4kwNTkx) — Telegram group for the matador miner
-- [ninjaraider chat](https://t.me/ninjaraiderpool) — Telegram group for the ninjaraider pool
 
 ## Run locally
 

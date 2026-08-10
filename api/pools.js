@@ -5,9 +5,6 @@
 // server-side (no CORS limits) and returns one combined, same-origin payload:
 //
 //   { updated, network: { nps, height, block_time_s }, pools: { <id>: <pct>, ... } }
-//
-// ninjaraider is intentionally absent — its stats are WebSocket-only (socket.io),
-// so the page keeps its baked-in snapshot for that one card.
 
 const TIMEOUT_MS = 6000;
 
@@ -29,63 +26,11 @@ const SOURCES = {
     const s = num(d?.pool?.pool_share_of_network);
     return { share: s == null ? null : s * 100, net: num(d?.pool?.network_hash_nps), height: num(d?.health?.btxd?.blocks) };
   },
-  async poolbtx() {
-    const d = await fetchJson('https://poolbtx.com/stats');
-    const s = num(d?.hashrate?.pool_share_1h) ?? num(d?.hashrate?.pool_share_live);
-    return { share: s == null ? null : s * 100, net: num(d?.hashrate?.network_nonce_rate_nps), height: num(d?.network?.chain_height) };
-  },
   async byron() {
     const d = await fetchJson('https://btxbyronbay.com/stats');
     // block_share_pct_* are already percentages.
     const s = num(d?.block_share_pct_live) ?? num(d?.block_share_pct_1h) ?? num(d?.block_share_pct_1w);
     return { share: s, net: num(d?.network_matmul_hps_live), height: num(d?.height) };
-  },
-  async ['btx-pool']() {
-    const d = await fetchJson('https://btx-pool.com/api/stats');
-    const net = num(d?.net_hashps);
-    const pool = num(d?.pool_hashps);
-    return { share: net && pool != null ? (pool / net) * 100 : null, net, height: num(d?.height) };
-  },
-  async bitminerpool() {
-    const d = await fetchJson('https://api.bitminerpool.xyz/api/pool');
-    const direct = num(d?.stats?.pool?.network_share_percent); // already a percent
-    const frac = num(d?.stats?.pool?.pool_share_of_network);
-    const s = direct ?? (frac == null ? null : frac * 100);
-    return { share: s, net: num(d?.stats?.network?.network_hash_nps), height: num(d?.chain?.height) };
-  },
-  async luckypool() {
-    const d = await fetchJson('https://btx.luckypool.io/api/stats');
-    const pool = num(d?.pool?.hashrate);
-    const net = num(d?.network?.hashrate);
-    return { share: pool != null && net ? (pool / net) * 100 : null, net, height: num(d?.network?.height) };
-  },
-  async ['coin-miners']() {
-    const d = await fetchJson('https://btx.coin-miners.info/api/pool');
-    const net = num(d?.network?.hashps);
-    const modes = Array.isArray(d?.modes) ? d.modes : [];
-    const pool = modes.reduce((sum, m) => sum + (num(m?.hashps) || 0), 0);
-    return { share: net ? (pool / net) * 100 : null, net, height: num(d?.network?.height) };
-  },
-  async diffpool() {
-    const d = await fetchJson('https://diffpool.xyz/btx/api/stats');
-    const mhs = num(d?.network?.net_hashrate_mhs);
-    return { share: num(d?.network?.pool_share_pct), net: mhs == null ? null : mhs * 1e6, height: num(d?.network?.height) };
-  },
-  async ariapool() {
-    const d = await fetchJson('https://pool.ariabrain.com/btx-stats.json');
-    return { share: num(d?.pool_share_pct), net: num(d?.network_hashrate_raw), height: num(d?.height) };
-  },
-  async tigerpool() {
-    const d = await fetchJson('https://btx.tiger-pool.com/api/stats');
-    const pool = num(d?.hashrate);
-    const net = num(d?.chartData?.[d.chartData.length - 1]?.networkHashrate);
-    return { share: pool != null && net ? (pool / net) * 100 : null, net, height: null };
-  },
-  // ninjaraider has no public stat API (WebSocket-only), so the ninjaraider-share
-  // GitHub Action scrapes its dashboard every ~20 min and publishes here.
-  async ninjaraider() {
-    const d = await fetchJson('https://raw.githubusercontent.com/vanities/btxlinks/data/ninjaraider.json');
-    return { share: num(d?.share), net: null, height: num(d?.height) };
   },
 };
 

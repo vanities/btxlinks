@@ -1078,7 +1078,7 @@
           <span class="tags"><span class="tag hot">MINER</span><span class="tag">GPU</span><span class="tag">NVIDIA</span><span class="tag">LINUX</span><span class="tag fee"><s>10%</s> 1% DEV FEE</span></span>
         </div>
         <h3 class="card-name">nekominer</h3>
-        <p class="card-desc">A CUDA GPU miner for NVIDIA cards (Compute 6.0+, driver 525+) on Linux x86_64, shipped as prebuilt binaries. Multi-algo — BTX mines at a 1% dev fee — with ready-made profiles for ninjaraider, minebtx, and bitminerpool.</p>
+        <p class="card-desc">A CUDA GPU miner for NVIDIA cards (Compute 6.0+, driver 525+) on Linux x86_64, shipped as prebuilt binaries. Multi-algo — BTX mines at a 1% dev fee — with a ready-made profile for minebtx.</p>
         <div class="conn">
           <button type="button" class="cp cp-cmd" data-copy="./nekominer -a btx -o minebtx.com:3333 -u YOUR_BTX_ADDRESS --worker rig --pool-proto minebtx" aria-label="Copy nekominer BTX mining command">
             <span class="cp-key" aria-hidden="true">$</span><span class="cp-val">./nekominer -a btx -o minebtx.com:3333 -u YOUR_BTX_ADDRESS --worker rig --pool-proto minebtx</span>
@@ -1593,18 +1593,8 @@
     var lastUpdate = 0;
 
     var POOL_META = {
-      ninjaraider:  { name: "ninjaraider",  color: "#ffb43a" },
-      btxpool:      { name: "btxpool.org",  color: "#5b8cff" },
-      poolbtx:      { name: "poolbtx",      color: "#86e8a0" },
       minebtx:      { name: "minebtx",      color: "#6ee7ff" },
-      byron:        { name: "Byron",        color: "#b79cff" },
-      "btx-pool":   { name: "btx-pool",     color: "#ff9ec4" },
-      bitminerpool: { name: "bitminerpool", color: "#ffd27a" },
-      luckypool:    { name: "luckypool",    color: "#2dd4bf" },
-      "coin-miners":{ name: "Coin Miners",  color: "#f97316" },
-      diffpool:     { name: "DiffPool",     color: "#d946ef" },
-      ariapool:     { name: "AriaPool",     color: "#ef4444" },
-      tigerpool:    { name: "Tiger Pool",   color: "#84cc16" }
+      byron:        { name: "Byron",        color: "#b79cff" }
     };
 
     // Stable raw self-reported share per pool, seeded from the baked-in bars and updated
