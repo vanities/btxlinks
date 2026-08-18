@@ -37,6 +37,8 @@ Open it in a browser, or host it on any static host (GitHub Pages, Vercel, Netli
 ### Explorers
 - [BTXplorer](https://explorer.minebtx.com/) — open-source block explorer; search blocks, transactions, and addresses
 - [first light](https://explorer.btxbyronbay.com/) — Byron Pool's BTX explorer; blocks, transactions, and network/chain-health stats
+- [BTXInfo](https://btxinfo.com) — community data terminal: live price, mining-economics calculator, hashrate history, rich list; open JSON API
+- [BTXScan](https://btxscan.io/) — block explorer; search blocks, transactions, and addresses, plus a next-halving tracker
 
 ### Community
 - [BTX on X](https://x.com/btxcommunity) — community X account
