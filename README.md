@@ -22,6 +22,13 @@ Open it in a browser, or host it on any static host (GitHub Pages, Vercel, Netli
 - [BTX Price](https://btxprice.com/) — **official** price dashboard: live model price, market cap, MatMul rate, JSON API
 - [BTX Telegram](https://t.me/btx_ecosystem) — **official** Telegram channel (announcements & releases); private — verify via the gate to get in
 
+### Community
+- [BTX Discord](https://discord.gg/btx) — community Discord; open to everyone, no gate
+- [BTX on X](https://x.com/btxcommunity) — community X account
+- [BTX Chain on X](https://x.com/thebtxchain) — community comms account: release notes, mining setup, network status
+- [BTX Community Chat](https://t.me/btx_ecosystem) — main community Telegram; private — same gate as above, verifying lets you into both
+- [matador chat](https://t.me/+wy07HLBwE4kwNTkx) — Telegram group for the matador miner
+
 ### Pools
 - [minebtx](https://minebtx.com) — no-node pool with a one-line installer, live dashboard + block explorer
 - [Byron Pool](https://btxbyronbay.com) — Australian PPLNS collective, self-custody
@@ -39,12 +46,6 @@ Open it in a browser, or host it on any static host (GitHub Pages, Vercel, Netli
 - [first light](https://explorer.btxbyronbay.com/) — Byron Pool's BTX explorer; blocks, transactions, and network/chain-health stats
 - [BTXInfo](https://btxinfo.com) — community data terminal: live price, mining-economics calculator, hashrate history, rich list; open JSON API
 - [BTXScan](https://btxscan.io/) — block explorer; search blocks, transactions, and addresses, plus a next-halving tracker
-
-### Community
-- [BTX Discord](https://discord.gg/btx) — community Discord; open to everyone, no gate
-- [BTX on X](https://x.com/btxcommunity) — community X account
-- [BTX Community Chat](https://t.me/btx_ecosystem) — main community Telegram; private — same gate as above, verifying lets you into both
-- [matador chat](https://t.me/+wy07HLBwE4kwNTkx) — Telegram group for the matador miner
 
 ## Run locally
 
