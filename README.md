@@ -21,7 +21,6 @@ Open it in a browser, or host it on any static host (GitHub Pages, Vercel, Netli
 - [BTX Node](https://github.com/btxchain/btx) — **official** reference node (C++): full node, wallet, mining infra; MatMul PoW + post-quantum sigs
 - [BTX Price](https://btxprice.com/) — **official** price dashboard: live model price, market cap, MatMul rate, JSON API
 - [BTX Telegram](https://t.me/btx_ecosystem) — **official** Telegram channel (announcements & releases); private — verify via the gate to get in
-- [BTX Discord](https://discord.gg/btx) — **official** community Discord: mining help, rig tuning, and announcements; open, no gate
 
 ### Pools
 - [minebtx](https://minebtx.com) — no-node pool with a one-line installer, live dashboard + block explorer
@@ -42,7 +41,7 @@ Open it in a browser, or host it on any static host (GitHub Pages, Vercel, Netli
 - [BTXScan](https://btxscan.io/) — block explorer; search blocks, transactions, and addresses, plus a next-halving tracker
 
 ### Community
-- [BTX Discord](https://discord.gg/btx) — **official** community Discord; open to everyone
+- [BTX Discord](https://discord.gg/btx) — community Discord; open to everyone, no gate
 - [BTX on X](https://x.com/btxcommunity) — community X account
 - [BTX Community Chat](https://t.me/btx_ecosystem) — main community Telegram; private — same gate as above, verifying lets you into both
 - [matador chat](https://t.me/+wy07HLBwE4kwNTkx) — Telegram group for the matador miner
