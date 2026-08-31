@@ -16,18 +16,17 @@ quantum-resistant keys.
 A single self-contained `index.html` — no build step, no dependencies, no tracking.
 Open it in a browser, or host it on any static host (GitHub Pages, Vercel, Netlify, …).
 
-### Official
-- [btx.dev](https://btx.dev/) — **official** developer hub: node releases, docs, REST API, whitepapers, source
-- [BTX Node](https://github.com/btxchain/btx) — **official** reference node (C++): full node, wallet, mining infra; MatMul PoW + post-quantum sigs
-- [BTX Price](https://btxprice.com/) — **official** price dashboard: live model price, market cap, MatMul rate, JSON API
-- [BTX Telegram](https://t.me/btx_ecosystem) — **official** Telegram channel (announcements & releases); private — verify via the gate to get in
-
 ### Community
 - [BTX Discord](https://discord.gg/btx) — community Discord; open to everyone, no gate
 - [BTX on X](https://x.com/btxcommunity) — community X account
 - [BTX Chain on X](https://x.com/thebtxchain) — community comms account: release notes, mining setup, network status
-- [BTX Community Chat](https://t.me/btx_ecosystem) — main community Telegram; private — same gate as above, verifying lets you into both
+- [BTX Community Chat](https://t.me/btx_ecosystem) — main community Telegram; private — verify via the gate, which also lets you into the announcements channel
 - [matador chat](https://t.me/+wy07HLBwE4kwNTkx) — Telegram group for the matador miner
+
+### Official
+- [btx.dev](https://btx.dev/) — **official** developer hub: node releases, docs, REST API, whitepapers, source
+- [BTX Node](https://github.com/btxchain/btx) — **official** reference node (C++): full node, wallet, mining infra; MatMul PoW + post-quantum sigs
+- [BTX Price](https://btxprice.com/) — **official** price dashboard: live model price, market cap, MatMul rate, JSON API
 
 ### Pools
 - [minebtx](https://minebtx.com) — no-node pool with a one-line installer, live dashboard + block explorer
